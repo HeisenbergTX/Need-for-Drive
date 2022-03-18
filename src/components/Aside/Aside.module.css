@@ -31,13 +31,13 @@
 
 @media (min-width: 1024px) {
   .navOpen {
-    margin-left: 62px;
+    padding-left: 62px;
     width: 50%;
   }
 }
 
 @media (min-width: 1101px) {
   .navOpen {
-    margin-left: 43px;
+    padding-left: 43px;
   }
 }
