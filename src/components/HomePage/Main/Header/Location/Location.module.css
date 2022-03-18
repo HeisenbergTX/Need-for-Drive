@@ -1,0 +1,16 @@
+.section {
+  width: 94px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.iconMarker {
+  height: 18px;
+}
+
+.town {
+  font-size: 14px;
+  color: var(--grey-dark);
+}

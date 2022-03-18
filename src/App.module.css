@@ -1,0 +1,26 @@
+.section {
+  display: flex;
+}
+.aside {
+  display: none;
+}
+
+@media (min-width: 540px) {
+  .aside {
+    display: block;
+    padding-top: 35px;
+    padding-bottom: 15px;
+    min-width: 85px;
+    background: var(--main-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .aside {
+    padding-bottom: 25px;
+  }
+}
