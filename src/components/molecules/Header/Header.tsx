@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Header.module.css";
+import style from "./Header.module.css";
 import { Link } from "react-router-dom";
 
 import { Location } from "../../atoms/Location/Location";
@@ -12,18 +12,18 @@ import { getIsOpenNav } from "../../../store/isOpenNav/selector";
 export const Header = () => {
   const isOpenNav = useSelector(getIsOpenNav);
   return (
-    <header className={s.header}>
-      <article className={cn(s.nav, { [s.navOpen]: isOpenNav })}>
+    <header className={style.header}>
+      <article className={cn(style.nav, { [style.navOpen]: isOpenNav })}>
         <Navigation />
       </article>
-      <article className={s.burgerMenu}>
+      <article className={style.burgerMenu}>
         <BurgerMenu />
       </article>
-      <div className={s.headerBlock}>
-        <Link className={s.link} to="#">
+      <div className={style.headerBlock}>
+        <Link className={style.link} to="#">
           Need for drive
         </Link>
-        <article className={s.location}>
+        <article className={style.location}>
           <Location />
         </article>
       </div>

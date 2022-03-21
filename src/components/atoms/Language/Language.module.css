@@ -3,13 +3,13 @@
 }
 
 .languageBtn {
+  font-family: "Roboto-Bold", sans-serif;
   padding: 0;
   width: 40px;
   height: 40px;
 
   border-radius: 50%;
   font-size: 13px;
-  font-weight: 700;
   border: none;
   background: transparent;
   color: var(--main-text-accent);
