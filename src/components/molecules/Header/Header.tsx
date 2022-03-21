@@ -2,12 +2,12 @@ import React from "react";
 import s from "./Header.module.css";
 import { Link } from "react-router-dom";
 
-import { Location } from "./Location/Location";
-import { BurgerMenu } from "../../../Aside/BurgerMenu/BurgerMenu";
-import { Navigation } from "../../../Aside/Navigation/Navigation";
+import { Location } from "../../atoms/Location/Location";
+import { BurgerMenu } from "../../atoms/BurgerMenu/BurgerMenu";
+import { Navigation } from "../Navigation/Navigation";
 import cn from "classnames";
 import { useSelector } from "react-redux";
-import { getIsOpenNav } from "../../../../store/isOpenNav/selector";
+import { getIsOpenNav } from "../../../store/isOpenNav/selector";
 
 export const Header = () => {
   const isOpenNav = useSelector(getIsOpenNav);

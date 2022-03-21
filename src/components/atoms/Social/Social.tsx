@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./Social.module.css";
+import style from "./Social.module.css";
 
 import { ReactComponent as Telegram } from "../../../icons/Telegram.svg";
 import { ReactComponent as Facebook } from "../../../icons/Facebook.svg";
@@ -7,15 +7,15 @@ import { ReactComponent as Instagram } from "../../../icons/Instagram.svg";
 
 export const Social = () => {
   return (
-    <section className={s.section}>
-      <a className={s.link} href="#">
-        <Telegram className={s.icon} />
+    <section className={style.section}>
+      <a className={style.link} href="#">
+        <Telegram className={style.icon} />
       </a>
-      <a className={s.link} href="#">
-        <Facebook className={s.icon} />
+      <a className={style.link} href="#">
+        <Facebook className={style.icon} />
       </a>
-      <a className={s.link} href="#">
-        <Instagram className={s.icon} />
+      <a className={style.link} href="#">
+        <Instagram className={style.icon} />
       </a>
     </section>
   );

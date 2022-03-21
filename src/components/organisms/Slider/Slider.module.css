@@ -64,6 +64,7 @@
   border: none;
   border-radius: 5px;
   color: var(--main-white);
+  cursor: pointer;
 }
 
 .nextArrow {

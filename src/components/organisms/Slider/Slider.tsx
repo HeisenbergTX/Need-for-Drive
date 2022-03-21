@@ -1,32 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import cn from "classnames";
 
-import s from "./Slider.module.css";
+import style from "./Slider.module.css";
 import { getIsOpenNav } from "../../../store/isOpenNav/selector";
 import { slides } from "./slides";
-import { Dots } from "./Dots/Dots";
+import { Dots } from "../../molecules/Dots/Dots";
 
 export const Slider = () => {
   const isOpenNav = useSelector(getIsOpenNav);
 
   return (
-    <section className={s.section}>
+    <section className={style.section}>
       <div
         style={{
           backgroundImage: `${`url(${slides[0].img})`}`,
         }}
-        className={cn(s.wrapper, { [s.hide]: isOpenNav })}
+        className={cn(style.wrapper, { [style.hide]: isOpenNav })}
       >
-        <button className={cn(s.prevArrow, s.arrow)} />
-        <div className={s.block}>
+        <button className={cn(style.prevArrow, style.arrow)} />
+        <div className={style.block}>
           <div />
-          <div className={s.slideInfo}>
-            <h2 className={s.title}>{slides[0].title}</h2>
-            <p className={s.subtitle}>{slides[0].subtitle}</p>
+          <div className={style.slideInfo}>
+            <h2 className={style.title}>{slides[0].title}</h2>
+            <p className={style.subtitle}>{slides[0].subtitle}</p>
             <button
               style={{ background: `${slides[0].styleBtn}` }}
-              className={s.btnMoreInfo}
+              className={style.btnMoreInfo}
             >
               Подробнее
             </button>
@@ -34,7 +34,7 @@ export const Slider = () => {
           <Dots activeSlide={0} />
         </div>
 
-        <button className={cn(s.nextArrow, s.arrow)} />
+        <button className={cn(style.nextArrow, style.arrow)} />
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import cn from "classnames";
-import s from "./BurgerMenu.module.css";
+import style from "./BurgerMenu.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsOpenNav } from "../../../store/isOpenNav/selector";
 import { changeIsOpenNav } from "../../../store/isOpenNav/action";
@@ -12,13 +12,13 @@ export const BurgerMenu = () => {
   return (
     <button
       onClick={() => dispatch(changeIsOpenNav(!isOpenNav))}
-      className={cn(s.burgerMenu, {
-        [s.active]: isOpenNav,
+      className={cn(style.burgerMenu, {
+        [style.active]: isOpenNav,
       })}
     >
-      <span className={cn(null, { [s.active]: isOpenNav })}></span>
-      <span className={cn(null, { [s.active]: isOpenNav })}></span>
-      <span className={cn(null, { [s.active]: isOpenNav })}></span>
+      <span className={cn(null, { [style.active]: isOpenNav })}></span>
+      <span className={cn(null, { [style.active]: isOpenNav })}></span>
+      <span className={cn(null, { [style.active]: isOpenNav })}></span>
     </button>
   );
 };
