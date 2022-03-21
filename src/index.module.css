@@ -1,0 +1,36 @@
+:root {
+  --main-text-accent: #0ec261;
+  --main-text-click: #076432;
+  --main-accent: linear-gradient(90deg, #0ec261 2.61%, #039f67 112.6%);
+  --main-accent-hover: linear-gradient(90deg, #0b934a 2.61%, #026e47 112.6%);
+  --main-accent-click: linear-gradient(90deg, #076432 2.61%, #013c27 112.6%);
+  --main-accent-active: linear-gradient(90deg, #0b934a 2.61%, #026e47 112.6%);
+  --arrow-color-hover: rgba(14, 194, 97, 0.2);
+
+  --main-black: #121212;
+  --main-white: #fff;
+  --grey-dark: #999999;
+  --grey-white: #eeeeee;
+}
+
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

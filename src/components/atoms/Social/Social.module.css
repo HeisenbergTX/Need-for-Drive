@@ -1,0 +1,27 @@
+.section {
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+}
+.link {
+  transition: 0.3s all;
+}
+
+.link:hover {
+  transform: scale(1.1);
+}
+.link:active {
+  transform: scale(1);
+}
+.icon {
+  transition: 0.3s all;
+  fill: var(--main-white);
+}
+
+.icon:hover {
+  fill: var(--main-text-accent);
+}
+
+.icon:active {
+  fill: var(--main-text-click);
+}
