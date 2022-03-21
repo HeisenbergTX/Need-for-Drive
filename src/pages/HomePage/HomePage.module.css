@@ -1,0 +1,16 @@
+.homePage {
+  width: 100vw;
+}
+.slider {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .homePage {
+    display: flex;
+  }
+  .slider {
+    display: block;
+    width: 50%;
+  }
+}
