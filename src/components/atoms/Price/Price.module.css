@@ -1,0 +1,14 @@
+.section {
+  font-size: 14px;
+}
+
+.price {
+  font-family: "Roboto-Bold", sans-serif;
+  margin-right: 8px;
+}
+
+@media (min-width: 1024px) {
+  .section {
+    font-size: 16px;
+  }
+}

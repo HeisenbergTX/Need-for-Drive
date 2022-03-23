@@ -22,7 +22,6 @@
   position: absolute;
 
   transition: 0.5s all;
-
   z-index: 1;
 }
 
@@ -75,5 +74,12 @@
 @media (min-width: 1024px) {
   .nav {
     display: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
