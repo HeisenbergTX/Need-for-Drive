@@ -1,11 +1,14 @@
 {
   "files": {
-    "main.css": "/Need-for-Drive/static/css/main.4774cc4e.css",
-    "main.js": "/Need-for-Drive/static/js/main.5a8a4b76.js",
+    "main.css": "/Need-for-Drive/static/css/main.dc3b596f.css",
+    "main.js": "/Need-for-Drive/static/js/main.c1d1df72.js",
     "static/media/slide4.jpg": "/Need-for-Drive/static/media/slide4.e361a376a5a987833ae3.jpg",
     "static/media/slide1.jpg": "/Need-for-Drive/static/media/slide1.d0d7174e7933259d64aa.jpg",
     "static/media/slide3.jpg": "/Need-for-Drive/static/media/slide3.c1d21628ce1093b0f933.jpg",
     "static/media/slide2.jpg": "/Need-for-Drive/static/media/slide2.475421343ce6b31e4dd5.jpg",
+    "static/media/Roboto-Thin.ttf": "/Need-for-Drive/static/media/Roboto-Thin.1711b41f3ae4cb322eea.ttf",
+    "static/media/Roboto-Regular.ttf": "/Need-for-Drive/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
+    "static/media/Roboto-Bold.ttf": "/Need-for-Drive/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
     "static/media/Instagram.svg": "/Need-for-Drive/static/media/Instagram.659632e810374379072aa538529c50ff.svg",
     "static/media/Telegram.svg": "/Need-for-Drive/static/media/Telegram.eeb2ced2d873775ca8aec5e759921397.svg",
     "index.html": "/Need-for-Drive/index.html",
@@ -13,11 +16,11 @@
     "static/media/Facebook.svg": "/Need-for-Drive/static/media/Facebook.2db7f4717977e3acc2adbdc9e2e4e562.svg",
     "static/media/Next.svg": "/Need-for-Drive/static/media/Next.9d87137d3cdc657274dc.svg",
     "static/media/Prev.svg": "/Need-for-Drive/static/media/Prev.dd0226d1ef40f8836d75.svg",
-    "main.4774cc4e.css.map": "/Need-for-Drive/static/css/main.4774cc4e.css.map",
-    "main.5a8a4b76.js.map": "/Need-for-Drive/static/js/main.5a8a4b76.js.map"
+    "main.dc3b596f.css.map": "/Need-for-Drive/static/css/main.dc3b596f.css.map",
+    "main.c1d1df72.js.map": "/Need-for-Drive/static/js/main.c1d1df72.js.map"
   },
   "entrypoints": [
-    "static/css/main.4774cc4e.css",
-    "static/js/main.5a8a4b76.js"
+    "static/css/main.dc3b596f.css",
+    "static/js/main.c1d1df72.js"
   ]
 }
