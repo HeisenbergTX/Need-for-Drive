@@ -11,7 +11,7 @@ export const Form = () => {
           <input
             placeholder="Начните вводить город"
             className={cn(style.cityInput, style.input)}
-            type="text"
+            type="search"
           />
         </div>
         <div className={style.point}>
@@ -19,7 +19,7 @@ export const Form = () => {
           <input
             placeholder="Начните вводить пункт выдачи"
             className={cn(style.pointInput, style.input)}
-            type="text"
+            type="search"
           />
         </div>
       </form>

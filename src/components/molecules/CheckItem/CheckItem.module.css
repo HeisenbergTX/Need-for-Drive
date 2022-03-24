@@ -19,11 +19,17 @@
   border-bottom: 1px dotted var(--grey-dark);
 }
 
-.addressPickupPoint {
+.cityPickupPoint {
+  min-width: max-content;
   margin: 0;
+  padding: 0;
   margin-left: 8px;
   color: var(--grey-dark);
   text-align: right;
+}
+.streetPickupPoint {
+  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 1024px) {

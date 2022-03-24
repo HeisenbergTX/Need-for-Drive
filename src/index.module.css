@@ -28,6 +28,13 @@ li {
 }
 
 @font-face {
+  font-family: "Roboto-Light";
+  font-weight: 300;
+  src: url("./fonts/Roboto-Light.ttf");
+}
+
+
+@font-face {
   font-family: "Roboto-Regular";
   font-weight: 400;
   src: url("./fonts/Roboto-Regular.ttf");

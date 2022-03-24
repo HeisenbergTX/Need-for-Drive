@@ -1,4 +1,5 @@
 import React from "react";
+import cn from "classnames";
 import style from "./CheckItem.module.css";
 
 export const CheckItem = () => {
@@ -6,7 +7,9 @@ export const CheckItem = () => {
     <section className={style.section}>
       <p className={style.pickupPoint}>Пункт выдачи</p>
       <span className={style.dotted}></span>
-      <span className={style.addressPickupPoint}>Ульяновск, Нариманова 42</span>
+      <p className={style.cityPickupPoint}>
+        Ульяновск,<p className={style.streetPickupPoint}>Нариманова 42</p>
+      </p>
     </section>
   );
 };
