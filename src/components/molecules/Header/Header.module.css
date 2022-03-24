@@ -77,9 +77,3 @@
   }
 }
 
-@media (min-width: 1440px) {
-  .header {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}

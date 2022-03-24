@@ -5,6 +5,15 @@
   overflow: hidden;
 }
 
+.hide::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(21, 27, 31, 0.8);
+  z-index: 7;
+}
+
 .content {
   overflow-y: auto;
 }
@@ -40,8 +49,7 @@
   .check {
     border-top: 0;
     border-left: 1px solid var(--grey-white);
-    min-width: 280px;
-    max-width: 320px;
+    min-width: 350px;
   }
   .content {
     min-height: 100vh;
@@ -50,7 +58,7 @@
 
 @media (min-width: 1440px) {
   .header {
-    padding: 0 64px;
+    padding: 0 32px;
   }
   .place {
     max-width: 100%;
