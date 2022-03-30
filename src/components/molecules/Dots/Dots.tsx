@@ -2,30 +2,22 @@ import React from "react";
 import style from "./Dots.module.css";
 import cn from "classnames";
 import { slides } from "../../organisms/Slider/slides";
+import { Dot } from "../../atoms/Dot/Dot";
 
-export const Dots = ({ activeSlide }: any) => {
+export const Dots = ({ activeSlide, setActiveSlide }: any) => {
   return (
     <section className={style.dots}>
-      <div
-        className={cn(style.dot, {
-          [style.activeDot]: slides[0].id === slides[activeSlide].id,
-        })}
-      />
-      <div
-        className={cn(style.dot, {
-          [style.activeDot]: slides[1].id === slides[activeSlide].id,
-        })}
-      />
-      <div
-        className={cn(style.dot, {
-          [style.activeDot]: slides[2].id === slides[activeSlide].id,
-        })}
-      />
-      <div
-        className={cn(style.dot, {
-          [style.activeDot]: slides[3].id === slides[activeSlide].id,
-        })}
-      />
+      {slides.map((el) => {
+        return (
+          <article key={el.id}>
+            <Dot
+              id={el.id}
+              activeSlide={activeSlide}
+              setActiveSlide={setActiveSlide}
+            />
+          </article>
+        );
+      })}
     </section>
   );
 };

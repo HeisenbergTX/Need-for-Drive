@@ -1,9 +1,9 @@
 import React from "react";
 import style from "./App.module.css";
+
 import { Aside } from "./components/molecules/Aside/Aside";
-import { BurgerMenu } from "./components/atoms/BurgerMenu/BurgerMenu";
 import { Language } from "./components/atoms/Language/Language";
-import { HomePage } from "./pages/HomePage/HomePage";
+import { AppRouter } from "./pages/AppRouter/AppRouter";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Aside />
         <Language />
       </article>
-      <HomePage />
+      <AppRouter />
     </section>
   );
 }

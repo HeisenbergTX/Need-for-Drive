@@ -22,7 +22,6 @@
   position: absolute;
 
   transition: 0.5s all;
-
   z-index: 1;
 }
 
@@ -41,7 +40,7 @@
 }
 
 .link {
-  font-weight: bold;
+  font-family: "Roboto-Bold", sans-serif;
   margin: 0;
   line-height: 90%;
   font-size: 30px;
@@ -77,3 +76,4 @@
     display: none;
   }
 }
+
