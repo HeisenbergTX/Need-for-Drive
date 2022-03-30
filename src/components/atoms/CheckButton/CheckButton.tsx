@@ -1,5 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { getCity } from "../../../store/city/selectors";
 import style from "./CheckButton.module.css";
 
 const btnCheck = [
@@ -11,12 +13,15 @@ const btnCheck = [
 ];
 
 export const CheckButton = () => {
+  const city = useSelector(getCity);
   return (
     <>
       {btnCheck.map((el) => {
         return (
           <NavLink key={el.id} to={el.path}>
-            <button className={style.btnCheck}>{el.text}</button>
+            <button disabled={city ? false : true} className={style.btnCheck}>
+              {el.text}
+            </button>
           </NavLink>
         );
       })}
