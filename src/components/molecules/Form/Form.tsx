@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import cn from "classnames";
 import style from "./Form.module.css";
 
@@ -26,12 +26,10 @@ export const Form = () => {
   const point = useSelector(getPoint);
 
   const cityHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
     dispatch(SelectedAddressCity(e.target.value));
   };
 
   const pointHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
     dispatch(SelectedAddressPoint(e.target.value));
   };
 
@@ -49,7 +47,7 @@ export const Form = () => {
         <div className={style.city}>
           <span>Город</span>
           <input
-            autoComplete="off"
+            autoComplete="no"
             list="city"
             placeholder="Начните вводить город"
             className={cn(style.cityInput, style.input)}
@@ -70,7 +68,7 @@ export const Form = () => {
         <div className={style.point}>
           <span>Пункт выдачи</span>
           <input
-            autoComplete="off"
+            autoComplete="no"
             placeholder="Начните вводить пункт выдачи"
             className={cn(style.pointInput, style.input)}
             type="search"

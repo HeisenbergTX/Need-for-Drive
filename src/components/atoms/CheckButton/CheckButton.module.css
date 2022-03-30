@@ -5,6 +5,7 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
+  background: var(--gray-white);
   color: var(--main-white);
 }
 

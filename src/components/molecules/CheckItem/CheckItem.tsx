@@ -11,8 +11,9 @@ export const CheckItem = () => {
     <section className={style.section}>
       <p className={style.pickupPoint}>Пункт выдачи</p>
       <span className={style.dotted}></span>
-      <span className={style.addressPickupPoint}>
-        {city && `${city}, ${street}`}
+      <span className={style.cityPickupPoint}>
+        {city && `${city},`}
+        <span className={style.streetPickupPoint}>{city && street}</span>
       </span>
     </section>
   );

@@ -18,7 +18,7 @@ export const CheckButton = () => {
     <>
       {btnCheck.map((el) => {
         return (
-          <NavLink key={el.id} to={el.path}>
+          <NavLink key={el.id} to="#">
             <button disabled={city ? false : true} className={style.btnCheck}>
               {el.text}
             </button>
