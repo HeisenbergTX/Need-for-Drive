@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Need-for-Drive/static/css/main.d5a759a2.css",
-    "main.js": "/Need-for-Drive/static/js/main.4598ca15.js",
+    "main.js": "/Need-for-Drive/static/js/main.2f5e1de7.js",
     "static/media/Roboto-Thin.ttf": "/Need-for-Drive/static/media/Roboto-Thin.1711b41f3ae4cb322eea.ttf",
     "static/media/Roboto-Regular.ttf": "/Need-for-Drive/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
     "static/media/Roboto-Bold.ttf": "/Need-for-Drive/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
@@ -16,10 +16,10 @@
     "static/media/Next.svg": "/Need-for-Drive/static/media/Next.9d87137d3cdc657274dc.svg",
     "static/media/Prev.svg": "/Need-for-Drive/static/media/Prev.dd0226d1ef40f8836d75.svg",
     "main.d5a759a2.css.map": "/Need-for-Drive/static/css/main.d5a759a2.css.map",
-    "main.4598ca15.js.map": "/Need-for-Drive/static/js/main.4598ca15.js.map"
+    "main.2f5e1de7.js.map": "/Need-for-Drive/static/js/main.2f5e1de7.js.map"
   },
   "entrypoints": [
     "static/css/main.d5a759a2.css",
-    "static/js/main.4598ca15.js"
+    "static/js/main.2f5e1de7.js"
   ]
 }
