@@ -1,22 +1,23 @@
-import React, { ChangeEvent, useEffect } from "react";
-import cn from "classnames";
-import style from "./Form.module.css";
-
-import {
-  FetchCitiesRequest,
-  SelectedAddressCity,
-} from "../../../store/city/actions";
-import { getCities } from "../../../store/city/selectors";
+import { ChangeEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { City } from "../../atoms/City/City";
-import { Point } from "../../atoms/Point/Point";
-import { getPoints } from "../../../store/point/selectors";
+import style from "./Form.module.css";
+import cn from "classnames";
+
 import {
   FetchPointsRequest,
   SelectedAddressPoint,
 } from "../../../store/point/actions";
+import {
+  FetchCitiesRequest,
+  SelectedAddressCity,
+} from "../../../store/city/actions";
+
+import { City } from "../../atoms/City/City";
+import { Point } from "../../atoms/Point/Point";
 import { getCity } from "../../../store/city/selectors";
 import { getPoint } from "../../../store/point/selectors";
+import { getCities } from "../../../store/city/selectors";
+import { getPoints } from "../../../store/point/selectors";
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ export const Form = () => {
           />
         </div>
         <datalist id="city">
-          {cities.map((el: any) => {
+          {cities.map((el) => {
             return (
               <article key={el.id}>
                 <City city={el.name} />;

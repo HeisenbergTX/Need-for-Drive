@@ -1,4 +1,4 @@
-import { ADD_PLACEMARK } from "./types";
+import { ADD_PLACEMARK, ADD_PLACEMARK_CITY } from "./types";
 
 interface IState {
   placemarks: unknown[];
@@ -13,6 +13,11 @@ export default (
   { type, payload }: { type: string; payload: any }
 ) => {
   switch (type) {
+    case ADD_PLACEMARK_CITY:
+      return {
+        ...state,
+        placemarks: [...state.placemarks, payload],
+      };
     case ADD_PLACEMARK:
       return {
         ...state,

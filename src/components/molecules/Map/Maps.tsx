@@ -3,17 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { YMaps, Map } from "react-yandex-maps";
 import style from "./Maps.module.css";
 
-import { addPlacemark } from "../../../store/placemarks/actions";
+import {
+  addPlacemark,
+  addPlacemarkCity,
+} from "../../../store/placemarks/actions";
 import { getPlacemarks } from "../../../store/placemarks/selectors";
 import { getPoints } from "../../../store/point/selectors";
 import { getPoint } from "../../../store/point/selectors";
-import { getCity } from "../../../store/city/selectors";
+import { getCities, getCity } from "../../../store/city/selectors";
 
 export const Maps = () => {
   let map: any;
 
   const state = { width: "100%", height: "350px" };
   const dispatch = useDispatch();
+  const cities = useSelector(getCities);
   const city = useSelector(getCity);
   const points = useSelector(getPoints);
   const point = useSelector(getPoint);
@@ -25,7 +29,7 @@ export const Maps = () => {
   ]);
 
   useEffect(() => {
-    placemarks.map((el: any) => {
+    placemarks.forEach((el: any) => {
       if (
         `${city.replace(/\s+/g, "")},${point.replace(/\s+/g, "")}` ===
         el.address
@@ -33,7 +37,39 @@ export const Maps = () => {
         setBound(el.bounds);
       }
     });
-  }, [city, point]);
+  }, [point]);
+
+  useEffect(() => {
+    placemarks.forEach((el: any) => {
+      if (`${city.replace(/\s+/g, "")}` === el.city) {
+        setBound(el.bounds);
+      }
+    });
+  }, [city]);
+
+  const geocoderCity = (ymaps: any, map: any, city: string) => {
+    ymaps
+      .geocode(city, {
+        results: 1,
+      })
+      .then((res: any) => {
+        try {
+          if (!res && !res.geoObjects.length)
+            throw new Error("Что-то пошло не так...");
+          let firstGeoObject = res.geoObjects.get(0);
+          let coordinates = firstGeoObject.geometry.getCoordinates();
+          let bounds = firstGeoObject.properties.get("boundedBy");
+          let placemark = new ymaps.Placemark(coordinates);
+          placemark.events.add("click", () => {
+            setBound(bounds);
+          });
+          dispatch(addPlacemarkCity(city, bounds));
+          map.geoObjects.add(res.geoObjects);
+        } catch (error: any) {
+          console.log(error.message);
+        }
+      });
+  };
 
   const geocoder = (ymaps: any, map: any, address: string) => {
     ymaps
@@ -47,7 +83,7 @@ export const Maps = () => {
           let firstGeoObject = res.geoObjects.get(0);
           let coordinates = firstGeoObject.geometry.getCoordinates();
           let bounds = firstGeoObject.properties.get("boundedBy");
-          var placemark = new ymaps.Placemark(coordinates);
+          let placemark = new ymaps.Placemark(coordinates);
           placemark.events.add("click", () => {
             setBound(bounds);
           });
@@ -60,7 +96,10 @@ export const Maps = () => {
   };
 
   const init = (ymaps: any, map: any) => {
-    points.map((el: any) => {
+    cities.forEach((el) => {
+      geocoderCity(ymaps, map, `${el.name.replace(/\s+/g, "")}`);
+    });
+    points.forEach((el) => {
       geocoder(
         ymaps,
         map,
