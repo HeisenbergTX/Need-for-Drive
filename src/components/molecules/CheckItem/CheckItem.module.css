@@ -12,17 +12,12 @@
   margin-bottom: 0;
 }
 
-.model {
-  display: none;
-}
-
-
-
 .title {
-  max-width: max-content;
-  width: 100%;
   margin: 0;
   margin-right: 8px;
+  min-width: fit-content;
+  max-width: max-content;
+  width: 100%;
   color: var(--main-black);
 }
 

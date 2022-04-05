@@ -6,7 +6,21 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
+  background: var(--gray-white);
   color: var(--main-white);
+}
+
+.btnCheck:not(:disabled) {
+  background: var(--main-accent);
+  cursor: pointer;
+}
+
+.btnCheck:not(:disabled):hover {
+  background: var(--main-accent-hover);
+}
+
+.btnCheck:not(:disabled):active {
+  background: var(--main-accent-click);
 }
 
 @media (min-width: 540px) {
