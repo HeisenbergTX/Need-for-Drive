@@ -9,8 +9,8 @@
 
   --main-black: #121212;
   --main-white: #fff;
-  --grey-dark: #999999;
-  --grey-white: #eeeeee;
+  --gray-dark: #999999;
+  --gray-white: #eeeeee;
 }
 
 ol,
@@ -32,7 +32,6 @@ li {
   font-weight: 300;
   src: url("./fonts/Roboto-Light.ttf");
 }
-
 
 @font-face {
   font-family: "Roboto-Regular";

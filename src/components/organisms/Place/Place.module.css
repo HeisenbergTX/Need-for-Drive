@@ -20,7 +20,7 @@
 
 .check {
   margin-top: 15px;
-  border-top: 1px solid var(--grey-white);
+  border-top: 1px solid var(--gray-white);
 }
 
 @media (min-width: 540px) {

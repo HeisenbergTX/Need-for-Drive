@@ -12,7 +12,7 @@
   margin: 0;
 
   text-decoration: none;
-  color: var(--grey-dark);
+  color: var(--gray-dark);
   margin-left: 6px;
   margin-right: 6px;
 }
@@ -21,7 +21,7 @@
   margin-left: 0;
 }
 
-.activeStep {
+.stepItem:global.active {
   color: var(--main-text-accent);
 }
 
@@ -30,7 +30,7 @@
   height: 0;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-left: 6px solid var(--grey-dark);
+  border-left: 6px solid var(--gray-dark);
 }
 
 @media (min-width: 540px) {

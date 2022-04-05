@@ -9,8 +9,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .section {
+  font-family: "Roboto-Light", sans-serif;
   color: var(--main-black);
-  font-weight: 300;
   font-size: 12px;
   display: flex;
   flex-direction: column;
@@ -29,13 +29,13 @@ input[type="search"]::-webkit-search-cancel-button {
   font-size: 12px;
   outline: none;
   border: 0;
-  border-bottom: 1px solid var(--grey-dark);
+  border-bottom: 1px solid var(--gray-dark);
   width: 150px;
 }
 
 .input::placeholder {
   font-family: "Roboto-Light";
-  color: var(--grey-dark);
+  color: var(--gray-dark);
 }
 
 .input:focus-visible {

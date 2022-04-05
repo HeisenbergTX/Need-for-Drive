@@ -1,25 +1,21 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import style from "./CheckButton.module.css";
 
-const btnCheck = [
-  {
-    id: 0,
-    text: "Выбрать модель",
-    path: "/order/models",
-  },
-];
-
 export const CheckButton = () => {
+  let location = useLocation();
+
   return (
     <>
-      {btnCheck.map((el) => {
-        return (
-          <NavLink key={el.id} to={el.path}>
-            <button className={style.btnCheck}>{el.text}</button>
-          </NavLink>
-        );
-      })}
+      {location.pathname === "/order/place" && (
+        <NavLink to="/order/models">
+          <button className={style.btnCheck}>Выбрать модель</button>
+        </NavLink>
+      )}
+      {location.pathname === "/order/models" && (
+        <NavLink to="/order/more">
+          <button className={style.btnCheck}>Дополнительно</button>
+        </NavLink>
+      )}
     </>
   );
 };
