@@ -1,0 +1,46 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+}
+
+.pickupPoint {
+  padding: 0 16px;
+  margin-top: 15px;
+}
+
+.placeMap {
+  margin: 0 16px;
+  margin-top: 25px;
+}
+
+.check {
+  margin-top: 15px;
+  border-top: 1px solid var(--grey-white);
+}
+
+@media (min-width: 540px) {
+  .pickupPoint {
+    padding: 0 32px;
+    margin-top: 25px;
+  }
+  .placeMap {
+    margin: 0 32px;
+    margin-top: 35px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pickupPoint {
+    padding: 0;
+    margin-top: 32px;
+  }
+  .placeMap {
+    margin: 0;
+    margin-top: 48px;
+  }
+}

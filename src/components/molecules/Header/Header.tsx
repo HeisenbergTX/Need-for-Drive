@@ -1,12 +1,12 @@
 import React from "react";
 import style from "./Header.module.css";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import cn from "classnames";
 
 import { Location } from "../../atoms/Location/Location";
 import { BurgerMenu } from "../../atoms/BurgerMenu/BurgerMenu";
 import { Navigation } from "../Navigation/Navigation";
-import cn from "classnames";
-import { useSelector } from "react-redux";
 import { getIsOpenNav } from "../../../store/isOpenNav/selector";
 
 export const Header = () => {
@@ -20,7 +20,7 @@ export const Header = () => {
         <BurgerMenu />
       </article>
       <div className={style.headerBlock}>
-        <Link className={style.link} to="#">
+        <Link className={style.link} to="/Need-for-Drive">
           Need for drive
         </Link>
         <article className={style.location}>

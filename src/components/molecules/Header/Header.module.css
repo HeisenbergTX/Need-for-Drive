@@ -22,7 +22,6 @@
   position: absolute;
 
   transition: 0.5s all;
-
   z-index: 1;
 }
 
@@ -77,3 +76,4 @@
     display: none;
   }
 }
+

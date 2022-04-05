@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import style from "./Content.module.css";
 
 export const Content = () => {
@@ -10,7 +11,9 @@ export const Content = () => {
         </h1>
         <p className={style.subtitle}>Поминутная аренда авто твоего города</p>
       </div>
-      <button className={style.btnReservation}>Забронировать</button>
+      <Link to="/order/place">
+        <button className={style.btnReservation}>Забронировать</button>
+      </Link>
     </section>
   );
 };
