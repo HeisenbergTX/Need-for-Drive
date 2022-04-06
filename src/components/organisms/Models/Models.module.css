@@ -1,0 +1,43 @@
+.section {
+  overflow: auto;
+  margin-top: 15px;
+}
+
+.modelsFilter {
+  margin: 0 16px;
+}
+
+.modelsCars {
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 540px) {
+  .section {
+    margin-top: 25px;
+  }
+  .modelsFilter {
+    margin: 0 32px;
+  }
+  .modelsCars {
+    margin-left: 32px;
+    margin-right: 32px;
+    margin-top: 35px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    margin-top: 32px;
+  }
+  .modelsFilter {
+    margin: 0;
+  }
+  .modelsCars {
+    margin-left: 0;
+    margin-right: 32px;
+    margin-top: 48px;
+  }
+}

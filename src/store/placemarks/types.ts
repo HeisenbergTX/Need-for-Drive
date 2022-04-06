@@ -1,0 +1,2 @@
+export const ADD_PLACEMARK = "ADD_PLACEMARK";
+export const ADD_PLACEMARK_CITY = "ADD_PLACEMARK_CITY";

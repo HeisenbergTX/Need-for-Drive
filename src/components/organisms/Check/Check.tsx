@@ -1,4 +1,3 @@
-import React from "react";
 import { CheckItem } from "../../molecules/CheckItem/CheckItem";
 import { Price } from "../../atoms/Price/Price";
 import style from "./Check.module.css";

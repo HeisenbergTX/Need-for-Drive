@@ -7,6 +7,7 @@ import { Place } from "../../components/organisms/Place/Place";
 import { Check } from "../../components/organisms/Check/Check";
 import { useSelector } from "react-redux";
 import { getIsOpenNav } from "../../store/isOpenNav/selector";
+import { OrderRouter } from "../OrderRouter/OrderRouter";
 
 export const OrderPage = () => {
   const isOpenNav = useSelector(getIsOpenNav);
@@ -19,8 +20,8 @@ export const OrderPage = () => {
         <Steps />
       </article>
       <div className={style.content}>
-        <article className={style.place}>
-          <Place />
+        <article className={style.forms}>
+          <OrderRouter />
         </article>
         <article className={style.check}>
           <Check />

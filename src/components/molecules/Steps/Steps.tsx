@@ -2,26 +2,26 @@ import React from "react";
 import style from "./Steps.module.css";
 import cn from "classnames";
 
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Steps = () => {
   return (
     <section className={style.section}>
-      <Link className={cn(style.stepItem, style.activeStep)} to="/order/place">
+      <NavLink className={style.stepItem} to="/order/place">
         Местоположение
-      </Link>
+      </NavLink>
       <span className={style.triangle} />
-      <Link className={style.stepItem} to="#">
+      <NavLink className={style.stepItem} to="/order/models">
         Модель
-      </Link>
+      </NavLink>
       <span className={style.triangle} />
-      <Link className={style.stepItem} to="#">
+      <NavLink className={style.stepItem} to="/order/options">
         Дополнительно
-      </Link>
+      </NavLink>
       <span className={style.triangle} />
-      <Link className={style.stepItem} to="#">
+      <NavLink className={style.stepItem} to="/order/total">
         Итого
-      </Link>
+      </NavLink>
     </section>
   );
 };
