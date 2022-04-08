@@ -9,6 +9,7 @@ interface IProps {
   name: string;
   minPrice: number;
   maxPrice: number;
+  colors: string[];
   image: any;
 }
 
@@ -17,6 +18,7 @@ export const Car: React.FC<IProps> = ({
   name,
   minPrice,
   maxPrice,
+  colors,
   image,
 }) => {
   const dispatch = useDispatch();
@@ -24,9 +26,9 @@ export const Car: React.FC<IProps> = ({
 
   const chooseCar = () => {
     if (modelCar.id === id) {
-      dispatch(ChooseModelCar("", "", 0));
+      dispatch(ChooseModelCar("", "", 0, []));
     } else {
-      dispatch(ChooseModelCar(id, name, maxPrice));
+      dispatch(ChooseModelCar(id, name, minPrice, colors));
     }
   };
 

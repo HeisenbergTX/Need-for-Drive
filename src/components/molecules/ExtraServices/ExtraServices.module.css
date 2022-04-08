@@ -1,0 +1,50 @@
+.section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  color: var(--main-black);
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.customСheсkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.customСheсkbox:last-child {
+  margin-bottom: 0;
+}
+
+.input {
+  margin: 0;
+}
+
+.text {
+  margin-left: 8px;
+  color: var(--gray-dark);
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-top: 25px;
+  }
+  .title {
+    margin-bottom: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    margin-top: 32px;
+  }
+  .title {
+    margin-bottom: 16px;
+  }
+}

@@ -24,12 +24,22 @@ export const CheckButton = () => {
         </NavLink>
       )}
       {location.pathname === "/order/models" && (
-        <NavLink to="/order/more">
+        <NavLink to="/order/options">
           <button
             disabled={modelCar.name ? false : true}
             className={style.btnCheck}
           >
             Дополнительно
+          </button>
+        </NavLink>
+      )}
+      {location.pathname === "/order/options" && (
+        <NavLink to="/order/result">
+          <button
+            disabled={modelCar.name ? false : true}
+            className={style.btnCheck}
+          >
+            Итого
           </button>
         </NavLink>
       )}

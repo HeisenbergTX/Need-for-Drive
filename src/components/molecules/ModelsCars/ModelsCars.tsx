@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import style from "./ModelsCars.module.css";
-import cn from "classnames";
 
 import { Car } from "../../atoms/Car/Car";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +19,6 @@ export const ModelsCars = () => {
   return (
     <ul className={style.section}>
       {cars.map((car: IModels) => {
-        
         return (
           <li className={style.car} key={car.id}>
             <Car
@@ -28,6 +26,7 @@ export const ModelsCars = () => {
               name={car.name}
               minPrice={car.priceMin}
               maxPrice={car.priceMax}
+              colors={car.colors}
               image={car.thumbnail.path}
             />
           </li>

@@ -44,8 +44,3 @@ export interface IModels {
   colors: string[];
   id: string;
 }
-
-export interface ICar {
-  name: string;
-  price: number;
-}

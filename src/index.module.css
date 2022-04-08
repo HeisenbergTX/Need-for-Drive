@@ -13,6 +13,14 @@
   --gray-white: #eeeeee;
 }
 
+input[type="radio"]:checked + span {
+  color: var(--main-black);
+}
+
+input[type="checkbox"]:checked + span {
+  color: var(--main-black);
+}
+
 ol,
 ul,
 li {
