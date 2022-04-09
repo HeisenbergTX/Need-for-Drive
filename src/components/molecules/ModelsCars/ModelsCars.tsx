@@ -3,14 +3,14 @@ import style from "./ModelsCars.module.css";
 
 import { Car } from "../../atoms/Car/Car";
 import { useDispatch, useSelector } from "react-redux";
-import { getModelCar, getModels } from "../../../store/models/selectors";
+import { getFilterName, getModels } from "../../../store/models/selectors";
 import { FetchModelsRequest } from "../../../store/models/actions";
 import { IModels } from "../../../store/types";
 
 export const ModelsCars = () => {
   const dispatch = useDispatch();
   const cars = useSelector(getModels);
-  const modelCar = useSelector(getModelCar);
+  const filterName = useSelector(getFilterName);
 
   useEffect(() => {
     dispatch(FetchModelsRequest());
@@ -18,20 +18,37 @@ export const ModelsCars = () => {
 
   return (
     <ul className={style.section}>
-      {cars.map((car: IModels) => {
-        return (
-          <li className={style.car} key={car.id}>
-            <Car
-              id={car.id}
-              name={car.name}
-              minPrice={car.priceMin}
-              maxPrice={car.priceMax}
-              colors={car.colors}
-              image={car.thumbnail.path}
-            />
-          </li>
-        );
-      })}
+      {filterName === "Все модели"
+        ? cars.map((car: IModels) => {
+            return (
+              <li className={style.car} key={car.id}>
+                <Car
+                  colors={car.colors}
+                  id={car.id}
+                  name={car.name}
+                  minPrice={car.priceMin}
+                  maxPrice={car.priceMax}
+                  image={car.thumbnail.path}
+                />
+              </li>
+            );
+          })
+        : cars
+            .filter((car: IModels) => car.categoryId.name === filterName)
+            .map((car: IModels) => {
+              return (
+                <li className={style.car} key={car.id}>
+                  <Car
+                    colors={car.colors}
+                    id={car.id}
+                    name={car.name}
+                    minPrice={car.priceMin}
+                    maxPrice={car.priceMax}
+                    image={car.thumbnail.path}
+                  />
+                </li>
+              );
+            })}
     </ul>
   );
 };

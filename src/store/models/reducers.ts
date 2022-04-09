@@ -2,14 +2,16 @@ import { IModels } from "./../types";
 import {
   FETCH_MODELS_REQUEST,
   FETCH_MODELS_SUCCESS,
-  CHOOSE_MODEL_CAR,
   FETCH_MODELS_ERROR,
+  GET_FILTER_NAME,
+  CHOOSE_MODEL_CAR,
 } from "./types";
 
 interface IState {
   pending: boolean;
   models: IModels[];
   chooseModelCar: {};
+  filterName: string;
   error: null | string;
 }
 
@@ -17,6 +19,7 @@ const initialState: IState = {
   pending: false,
   models: [],
   chooseModelCar: {},
+  filterName: "Все модели",
   error: null,
 };
 
@@ -36,6 +39,8 @@ export default (
         pending: false,
         models: payload.models,
       };
+    case GET_FILTER_NAME:
+      return { ...state, filterName: payload };
     case CHOOSE_MODEL_CAR:
       return {
         ...state,

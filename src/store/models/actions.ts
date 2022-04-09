@@ -3,6 +3,7 @@ import {
   FETCH_MODELS_SUCCESS,
   FETCH_MODELS_ERROR,
   CHOOSE_MODEL_CAR,
+  GET_FILTER_NAME,
 } from "./types";
 
 export const FetchModelsRequest = () => ({
@@ -27,6 +28,11 @@ export const ChooseModelCar = (
     minPrice,
     colors,
   },
+});
+
+export const GetFilterName = (payload: string) => ({
+  type: GET_FILTER_NAME,
+  payload,
 });
 
 export const FetchModelsError = (payload: any) => ({
