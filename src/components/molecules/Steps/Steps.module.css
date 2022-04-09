@@ -17,6 +17,10 @@
   margin-right: 6px;
 }
 
+.passedPhase {
+  color: var(--main-black);
+}
+
 .stepItem:first-child {
   margin-left: 0;
 }

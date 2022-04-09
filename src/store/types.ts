@@ -28,7 +28,7 @@ export interface IModels {
   priceMax: number;
   name: string;
   number: string;
-  categotyId: {
+  categoryId: {
     name: string;
     description: string;
     id: string;

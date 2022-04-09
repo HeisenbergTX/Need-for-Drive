@@ -1,15 +1,16 @@
 .section {
   display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
   font-family: "Roboto-Light", sans-serif;
   font-size: 12px;
 }
 
-.customRadio:first-child {
-  margin-left: 0;
-}
-
 .customRadio {
-  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
 }
 
 .customRadio > input {
@@ -55,4 +56,10 @@
 .customRadio > input:disabled + span::before {
   background-color: var(--gray-white);
   border-color: var(--gray-white);
+}
+
+@media (min-width: 768px) {
+  .section {
+    justify-content: start;
+  }
 }
