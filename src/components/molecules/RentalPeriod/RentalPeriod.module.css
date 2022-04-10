@@ -1,4 +1,4 @@
-input[type="date"]::-webkit-search-cancel-button {
+input[type="datetime-local"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   width: 8px;
   height: 8px;
@@ -7,8 +7,8 @@ input[type="date"]::-webkit-search-cancel-button {
   margin-bottom: 2px;
   cursor: pointer;
 }
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
 }
 .section {
   margin-top: 20px;
@@ -41,6 +41,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-bottom: 1px solid var(--gray-dark);
   width: 150px;
   text-overflow: ellipsis;
+}
+
+.error {
+  border-bottom: 1px solid red;
 }
 
 .inputDate:first-child {

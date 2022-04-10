@@ -8,7 +8,7 @@ import { getModelCar, getModels } from "../../../store/models/selectors";
 import { ColorItem } from "../../atoms/ColorItem/ColorItem";
 import { RentalPeriodItem } from "../../atoms/RentalPeriodItem/RentalPeriodItem";
 import { RateItem } from "../../atoms/RateItem/RateItem";
-import { FullTank } from "../../atoms/FullTank/FullTank";
+import { ExtraServicesItem } from "../../atoms/ExtraServicesItem/ExtraServicesItem";
 
 export const CheckItem = () => {
   let location = useLocation();
@@ -41,7 +41,7 @@ export const CheckItem = () => {
           <ColorItem />
           <RentalPeriodItem />
           <RateItem />
-          <FullTank />
+          <ExtraServicesItem />
         </>
       )}
     </section>

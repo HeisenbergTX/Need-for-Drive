@@ -5,10 +5,22 @@ import cn from "classnames";
 
 import { getPoint, getPoints } from "../../../store/point/selectors";
 import { getModelCar } from "../../../store/models/selectors";
+import {
+  getColorCar,
+  getRateCar,
+  getRentalPeriodCar,
+} from "../../../store/optionalService/selectors";
 
 export const Steps = () => {
   const points = useSelector(getPoints);
   const point = useSelector(getPoint);
+  const colorCar = useSelector(getColorCar);
+  const rateCar = useSelector(getRateCar);
+  const rentPeriod = useSelector(getRentalPeriodCar);
+  console.log(rentPeriod);
+
+  const fullnessCheck = [colorCar, rateCar, rentPeriod];
+  const stepActive = fullnessCheck.every((check) => check);
 
   const modelCar = useSelector(getModelCar);
   let activePoint = points.find((el) => el.address === point);
@@ -41,7 +53,11 @@ export const Steps = () => {
         Дополнительно
       </NavLink>
       <span className={style.triangle} />
-      <NavLink className={style.stepItem} to="/order/total">
+      <NavLink
+        onClick={stepActive ? () => {} : disabledNavLink}
+        className={cn(style.stepItem, { [style.passedPhase]: stepActive })}
+        to="/order/total"
+      >
         Итого
       </NavLink>
     </section>
