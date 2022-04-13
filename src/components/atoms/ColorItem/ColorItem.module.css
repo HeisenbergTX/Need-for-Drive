@@ -1,19 +1,7 @@
-.section {
-  font-size: 12px;
-}
-
 .checkItem {
   display: flex;
   align-items: flex-end;
   margin-bottom: 16px;
-}
-
-.checkItem:last-child {
-  margin-bottom: 0;
-}
-
-.models {
-  display: none;
 }
 
 .title {
@@ -32,28 +20,8 @@
   border-bottom: 1px dotted var(--gray-dark);
 }
 
-.cityPickupPoint {
-  display: block;
-  min-width: max-content;
-  margin: 0;
-  padding: 0;
-  margin-left: 8px;
-  text-align: right;
-}
-.streetPickupPoint {
-  display: block;
-  margin: 0;
-  padding: 0;
-}
-
 .text {
   display: block;
   min-width: max-content;
   color: var(--gray-dark);
-}
-
-@media (min-width: 1024px) {
-  .section {
-    font-size: 14px;
-  }
 }

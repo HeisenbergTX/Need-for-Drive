@@ -23,6 +23,7 @@ export const ModelsCars = () => {
             return (
               <li className={style.car} key={car.id}>
                 <Car
+                  colors={car.colors}
                   id={car.id}
                   name={car.name}
                   minPrice={car.priceMin}
@@ -38,6 +39,7 @@ export const ModelsCars = () => {
               return (
                 <li className={style.car} key={car.id}>
                   <Car
+                    colors={car.colors}
                     id={car.id}
                     name={car.name}
                     minPrice={car.priceMin}

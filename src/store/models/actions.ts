@@ -15,12 +15,18 @@ export const FetchModelsSuccess = (payload: any) => ({
   payload,
 });
 
-export const ChooseModelCar = (id: string, name: string, maxPrice: number) => ({
+export const ChooseModelCar = (
+  id: string,
+  name: string,
+  minPrice: number,
+  colors: string[]
+) => ({
   type: CHOOSE_MODEL_CAR,
   payload: {
     id,
     name,
-    maxPrice,
+    minPrice,
+    colors,
   },
 });
 

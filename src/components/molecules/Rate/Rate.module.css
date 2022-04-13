@@ -1,0 +1,91 @@
+.section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  font-family: "Roboto-Light", sans-serif;
+  color: var(--main-black);
+  font-size: 14px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.customRadio:first-child {
+  margin-left: 0;
+}
+.customRadio {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.customRadio:last-child {
+  margin-bottom: 0;
+}
+
+.customRadio > input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.customRadio > span {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  color: var(--gray-dark);
+  cursor: pointer;
+}
+
+.customRadio > span::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border: 1px solid var(--gray-dark);
+  border-radius: 50%;
+  margin-right: 8px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+}
+
+.customRadio > input:not(:disabled):not(:checked) + span:hover::before {
+  border-color: var(--main-text-accent);
+}
+
+.customRadio > input:checked + span::before {
+  border-color: var(--main-text-accent);
+  background-color: var(--main-text-accent);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='50%' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+.customRadio > input:disabled + span::before {
+  background-color: var(--gray-white);
+  border-color: var(--gray-white);
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-top: 25px;
+  }
+  .title {
+    margin-bottom: 14px;
+  }
+  .customRadio {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    margin-top: 32px;
+  }
+  .title {
+    margin-bottom: 16px;
+  }
+}

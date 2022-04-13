@@ -15,7 +15,6 @@ export const Steps = () => {
   const disabledNavLink = (e: any) => {
     e.preventDefault();
   };
-  console.log(modelCar);
 
   return (
     <section className={style.section}>
