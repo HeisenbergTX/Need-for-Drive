@@ -116,7 +116,7 @@ export const Maps = () => {
           style={{ width: "100%", heigth: "100%" }}
           query={{
             ns: "use-load-option",
-            apikey: "55b4899b-8334-462b-ab91-21cacd078ffb",
+            apikey: `${process.env.REACT_APP_API_KEY_MAP}`,
             load: "package.full",
           }}
         >
