@@ -17,3 +17,9 @@ export const getChildSeatCar = (state: RootState) =>
 
 export const getRightHandDriveCar = (state: RootState) =>
   state.optionalService.rightHandDrive;
+
+export const getOptions = (state: RootState) => state.optionalService;
+
+export const getDateFrom = (state: RootState) => state.optionalService.dateFrom;
+
+export const getDateTo = (state: RootState) => state.optionalService.dateTo;

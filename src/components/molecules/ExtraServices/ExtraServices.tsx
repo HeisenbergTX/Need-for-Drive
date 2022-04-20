@@ -62,7 +62,7 @@ export const ExtraServices = () => {
       </label>
       <label className={style.customСheсkbox}>
         <input
-          defaultChecked={getChildSeat?.seat}
+          defaultChecked={getChildSeat.childSeat}
           className={style.input}
           type="checkbox"
           {...register("isChildSeat")}

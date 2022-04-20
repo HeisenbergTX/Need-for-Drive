@@ -27,22 +27,22 @@ export const Price = () => {
 
   const sumRateMinute = () => {
     if (rate === "Поминутно" && truthValidation) {
-      return minute + hour * 60 + day * 60;
+      return (
+        (minute +
+          (hour && hour * 60) +
+          (hour && day ? day * 24 : day * 60 * 24)) *
+        7
+      );
     }
     return 0;
   };
 
   const sumRateDay = () => {
     if (rate === "На сутки" && truthValidation) {
-      return Math.floor(
-        day + (24 / (hour * 60) + 24 / (hour * 60 + minute)) * 1999
-      );
+      return day * 1999;
     }
     return 0;
   };
-  console.log("day", sumRateDay());
-
-  console.log(sumRateMinute());
 
   const sumPrice =
     modelCar.minPrice +

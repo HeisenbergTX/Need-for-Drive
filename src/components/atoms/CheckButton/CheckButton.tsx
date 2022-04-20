@@ -5,6 +5,7 @@ import style from "./CheckButton.module.css";
 import { getModelCar } from "../../../store/models/selectors";
 import {
   getColorCar,
+  getOptions,
   getRateCar,
   getRentalPeriodCar,
 } from "../../../store/optionalService/selectors";
@@ -14,13 +15,9 @@ export const CheckButton = () => {
   const points = useSelector(getPoints);
   const point = useSelector(getPoint);
   const modelCar = useSelector(getModelCar);
-  const colorCar = useSelector(getColorCar);
-  const rateCar = useSelector(getRateCar);
-  const rentPeriod = useSelector(getRentalPeriodCar);
-  console.log(rentPeriod);
-  
+  const orderInfo = useSelector(getOptions);
 
-  const fullnessCheck = [colorCar, rateCar, rentPeriod];
+  const fullnessCheck = [orderInfo.color, orderInfo.rate, orderInfo.isRentalPeriod];
   const buttonActive = fullnessCheck.every((check) => check);
 
   let activePoint = points.find((el) => el.address === point);

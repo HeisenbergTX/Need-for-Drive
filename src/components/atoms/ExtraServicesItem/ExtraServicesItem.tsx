@@ -13,14 +13,14 @@ export const ExtraServicesItem = () => {
 
   return (
     <>
-      {getFullTank.fulltank && (
+      {getFullTank.fullTank && (
         <div className={style.checkItem}>
           <p className={style.title}>Полный бак</p>
           <span className={style.dotted}></span>
           <span className={style.text}>Да</span>
         </div>
       )}
-      {getChildSeat.childSeat && (
+      {getChildSeat.seat && (
         <div className={style.checkItem}>
           <p className={style.title}>Детское кресло</p>
           <span className={style.dotted}></span>

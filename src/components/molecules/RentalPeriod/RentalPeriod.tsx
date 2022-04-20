@@ -1,5 +1,6 @@
-import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useForm, FormProvider } from "react-hook-form";
+import format from "dateformat";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 
@@ -7,19 +8,28 @@ import style from "./RentalPeriod.module.css";
 import {
   chooseRentalPeriodCar,
   chooseTimesRent,
+  chooseDateFrom,
+  chooseDateTo,
 } from "../../../store/optionalService/actions";
-import { getRentalPeriodCar } from "../../../store/optionalService/selectors";
+import {
+  getDateFrom,
+  getDateTo,
+  getRentalPeriodCar,
+} from "../../../store/optionalService/selectors";
 
 export const RentalPeriod = () => {
   const dispatch = useDispatch();
   const rentalPeriod = useSelector(getRentalPeriodCar);
-  const { register, handleSubmit, watch } = useForm();
+  const getValueDateFrom = useSelector(getDateFrom);
+  const getValueDateTo = useSelector(getDateTo);
+  const { register, handleSubmit, watch, setValue, resetField } = useForm();
 
   const [dateFrom, setDateFrom] = useState<Date>();
   const [dateAt, setDateAt] = useState<Date>();
+  const [clearDateFrom, setClearDateFrom] = useState<boolean>(false);
 
   const valueDateFrom = watch("dateFrom");
-  const valueDateAt = watch("dateAt");
+  const valueDateAt = watch("dateTo");
 
   const difference = () => {
     if (dateAt && dateFrom && valueDateAt > valueDateFrom) {
@@ -46,6 +56,13 @@ export const RentalPeriod = () => {
   };
 
   useEffect(() => {
+    if (valueDateFrom && valueDateAt) {
+      dispatch(chooseDateFrom(valueDateFrom));
+      dispatch(chooseDateTo(valueDateAt));
+    }
+  }, [valueDateFrom && valueDateAt]);
+
+  useEffect(() => {
     difference();
   }, [valueDateAt && valueDateFrom]);
 
@@ -62,33 +79,74 @@ export const RentalPeriod = () => {
     }
   }, [valueDateAt]);
 
+  const defaultValues = {
+    dateTo: getValueDateTo || "",
+    dateFrom: getValueDateFrom || "",
+  };
+
+  console.log(defaultValues);
+
+  const form = useForm({
+    defaultValues,
+  });
+
+  useEffect(() => {
+    if (defaultValues.dateFrom)
+      setValue(
+        "dateFrom",
+        format(defaultValues.dateFrom, "yyyy-mm-dd'T'HH:MM")
+      );
+  }, [defaultValues.dateFrom]);
+
+  useEffect(() => {
+    if (defaultValues.dateTo)
+      setValue("dateTo", format(defaultValues.dateTo, "yyyy-mm-dd'T'HH:MM"));
+  }, [defaultValues.dateTo]);
+
+  const clickFromHandler = () => {
+    dispatch(chooseDateFrom(""));
+    resetField("dateFrom");
+  };
+  const clickToHandler = () => {
+    dispatch(chooseDateTo(""));
+    resetField("dateTo");
+  };
+
   return (
     <section className={style.section}>
       <p className={style.title}>Дата аренды</p>
-      <form onSubmit={handleSubmit((data) => data)} className={style.form}>
-        <label className={style.inputDate}>
-          <span>С</span>
-          <input
-            max={"9999-12-31T23:59"}
-            className={style.input}
-            type="datetime-local"
-            {...register("dateFrom")}
-          />
-        </label>
-        <label className={style.inputDate}>
-          <span>По</span>
-          <input
-            max={"9999-12-31T23:59"}
-            min={valueDateFrom}
-            className={cn(style.input, {
-              [style.error]:
-                rentalPeriod !== "" && valueDateAt <= valueDateFrom,
-            })}
-            type="datetime-local"
-            {...register("dateAt")}
-          />
-        </label>
-      </form>
+      <FormProvider {...form}>
+        <form onSubmit={handleSubmit((data) => data)} className={style.form}>
+          <label className={style.inputDate}>
+            <span>С</span>
+            <input
+              {...register("dateFrom")}
+              max={"9999-12-31T23:59"}
+              className={style.input}
+              type="datetime-local"
+            />
+            {valueDateFrom && (
+              <div className={style.clearBtn} onClick={clickFromHandler} />
+            )}
+          </label>
+          <label className={style.inputDate}>
+            <span>По</span>
+            <input
+              max={"9999-12-31T23:59"}
+              min={valueDateFrom}
+              className={cn(style.input, {
+                [style.error]:
+                  rentalPeriod !== "" && valueDateAt <= valueDateFrom,
+              })}
+              type="datetime-local"
+              {...register("dateTo")}
+            />
+            {valueDateAt && (
+              <div className={style.clearBtn} onClick={clickToHandler} />
+            )}
+          </label>
+        </form>
+      </FormProvider>
     </section>
   );
 };

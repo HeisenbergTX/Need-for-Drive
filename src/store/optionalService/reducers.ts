@@ -6,11 +6,15 @@ import {
   CHOOSE_FULL_TANK_CAR,
   CHOOSE_CHILD_SEAT_CAR,
   CHOOSE_RIGHT_HAND_DRIVE_CAR,
+  CHOOSE_DATE_TO,
+  CHOOSE_DATE_FROM,
 } from "./types";
 
 interface IState {
   color: string;
   isRentalPeriod: string;
+  dateTo: string;
+  dateFrom: string;
   timesRent: {
     minutes: number;
     hours: number;
@@ -25,6 +29,8 @@ interface IState {
 const inititalState: IState = {
   color: "",
   isRentalPeriod: "",
+  dateTo: "",
+  dateFrom: "",
   timesRent: {
     minutes: 0,
     hours: 0,
@@ -50,6 +56,16 @@ export default (
       return {
         ...state,
         isRentalPeriod: payload,
+      };
+    case CHOOSE_DATE_FROM:
+      return {
+        ...state,
+        dateFrom: payload,
+      };
+    case CHOOSE_DATE_TO:
+      return {
+        ...state,
+        dateTo: payload,
       };
     case CHOOSE_TIMES_RENT_CAR:
       return {

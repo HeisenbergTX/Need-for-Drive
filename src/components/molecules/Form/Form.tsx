@@ -14,12 +14,13 @@ import {
 
 import { City } from "../../atoms/City/City";
 import { Point } from "../../atoms/Point/Point";
-import { getCity } from "../../../store/city/selectors";
+import { getCities, getCity } from "../../../store/city/selectors";
 import { getPoint } from "../../../store/point/selectors";
 import { getPoints } from "../../../store/point/selectors";
 
 export const Form = () => {
   const dispatch = useDispatch();
+  const cities = useSelector(getCities);
   const points = useSelector(getPoints);
   const city = useSelector(getCity);
   const point = useSelector(getPoint);
@@ -36,11 +37,15 @@ export const Form = () => {
   };
 
   useEffect(() => {
-    dispatch(FetchCitiesRequest());
+    if (cities.length === 0) {
+      dispatch(FetchCitiesRequest());
+    }
   }, []);
 
   useEffect(() => {
-    dispatch(FetchPointsRequest());
+    if (points.length === 0) {
+      dispatch(FetchPointsRequest());
+    }
   }, []);
 
   return (
