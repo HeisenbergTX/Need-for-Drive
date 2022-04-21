@@ -6,7 +6,7 @@ import style from "./Slider.module.css";
 import { Dots } from "../../molecules/Dots/Dots";
 
 import { slides } from "./slides";
-import { getIsOpenNav } from "../../../store/isOpenNav/selector";
+import { getIsOpenNav } from "../../../store/modalWindows/selectors";
 
 export const Slider = () => {
   const isOpenNav = useSelector(getIsOpenNav);

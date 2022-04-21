@@ -13,8 +13,9 @@ export const ModelsCars = () => {
   const filterName = useSelector(getFilterName);
 
   useEffect(() => {
-    if(cars.length ===0){
-    dispatch(FetchModelsRequest());}
+    if (cars.length === 0) {
+      dispatch(FetchModelsRequest());
+    }
   }, []);
 
   return (
@@ -30,6 +31,7 @@ export const ModelsCars = () => {
                   minPrice={car.priceMin}
                   maxPrice={car.priceMax}
                   image={car.thumbnail.path}
+                  number={car.number}
                 />
               </li>
             );
@@ -46,6 +48,7 @@ export const ModelsCars = () => {
                     minPrice={car.priceMin}
                     maxPrice={car.priceMax}
                     image={car.thumbnail.path}
+                    number={car.number}
                   />
                 </li>
               );

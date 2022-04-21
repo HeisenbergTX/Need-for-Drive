@@ -5,7 +5,7 @@ import { Navigation } from "../Navigation/Navigation";
 
 import cn from "classnames";
 import { useSelector } from "react-redux";
-import { getIsOpenNav } from "../../../store/isOpenNav/selector";
+import { getIsOpenNav } from "../../../store/modalWindows/selectors";
 
 export const Aside = () => {
   const isOpenNav = useSelector(getIsOpenNav);

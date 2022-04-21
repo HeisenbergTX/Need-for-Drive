@@ -21,7 +21,7 @@ export const CheckItem = () => {
 
   const arrayOptional = [
     options.tank.fullTank,
-    options.childSeat.seat,
+    options.childSeat.childSeat,
     options.rightHandDrive.rightHandDrive,
     options.isRentalPeriod.dateAt,
     options.isRentalPeriod.dateFrom,

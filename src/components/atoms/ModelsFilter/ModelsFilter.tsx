@@ -42,7 +42,7 @@ export const ModelsFilter = () => {
                 name="radio"
                 defaultChecked={filterActive === filt}
               />
-              <span>{filt}</span>
+              <span>{filt[0].toUpperCase() + filt.slice(1)}</span>
             </label>
           );
         })}

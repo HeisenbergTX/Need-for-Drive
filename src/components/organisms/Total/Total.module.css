@@ -1,0 +1,21 @@
+.section {
+    margin-top: 15px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  
+  @media (min-width: 540px) {
+    .section {
+      margin-top: 25px;
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .section {
+      margin-top: 32px;
+      margin-left: 0;
+      margin-right: 32px;
+    }
+  }

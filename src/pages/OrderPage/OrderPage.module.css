@@ -14,6 +14,16 @@
   z-index: 1;
 }
 
+.loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 5;
+}
+
 .content {
   overflow-y: auto;
 }
@@ -32,6 +42,9 @@
 @media (min-width: 540px) {
   .steps {
     padding-left: 32px;
+  }
+  .loader {
+    margin-left: -85px;
   }
 }
 
@@ -54,7 +67,7 @@
   }
 }
 
-@media (min-width: 1200px){
+@media (min-width: 1200px) {
   .forms {
     min-width: 65%;
   }
@@ -75,7 +88,7 @@
   }
 }
 
-@media (min-width: 1700px){
+@media (min-width: 1700px) {
   .forms {
     min-width: 75%;
   }

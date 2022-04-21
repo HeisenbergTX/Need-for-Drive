@@ -10,6 +10,19 @@
   color: var(--main-white);
 }
 
+.confirmOrder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+}
+
 .btnCheck:not(:disabled) {
   background: var(--main-accent);
   cursor: pointer;
