@@ -6,15 +6,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFilterName, getModels } from "../../../store/models/selectors";
 import { FetchModelsRequest } from "../../../store/models/actions";
 import { IModels } from "../../../store/types";
+import { FetchRatesRequest } from "../../../store/rates/actions";
+import { getRates } from "../../../store/rates/selectors";
 
 export const ModelsCars = () => {
   const dispatch = useDispatch();
   const cars = useSelector(getModels);
+  const rates = useSelector(getRates);
   const filterName = useSelector(getFilterName);
 
   useEffect(() => {
     if (cars.length === 0) {
       dispatch(FetchModelsRequest());
+    }
+  }, []);
+
+  useEffect(() => {
+    if (rates.length === 0) {
+      dispatch(FetchRatesRequest());
     }
   }, []);
 

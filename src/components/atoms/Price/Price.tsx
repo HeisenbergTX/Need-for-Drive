@@ -1,4 +1,6 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { choosePrice } from "../../../store/compiledOrder/actions";
 import { getModelCar } from "../../../store/models/selectors";
 import {
   getChildSeatCar,
@@ -7,14 +9,17 @@ import {
   getRightHandDriveCar,
   getTimesRent,
 } from "../../../store/optionalService/selectors";
+import { getRates } from "../../../store/rates/selectors";
 import style from "./Price.module.css";
 
 export const Price = () => {
+  const dispatch = useDispatch();
   const modelCar = useSelector(getModelCar);
   const costFullTank = useSelector(getFullTankCar);
   const costChildSeat = useSelector(getChildSeatCar);
   const costRightHandDriveCar = useSelector(getRightHandDriveCar);
   const timesRentCar = useSelector(getTimesRent);
+  const rates = useSelector(getRates);
   const rate = useSelector(getRateCar);
 
   const minute = timesRentCar.minutes;
@@ -25,23 +30,19 @@ export const Price = () => {
 
   const truthValidation = arrTimesRentCar.some((el) => el !== 0);
 
-  const sumRateMinute = () => {
-    if (rate === "Поминутно" && truthValidation) {
+  const sumRate = () => {
+    if (rate.name === "Поминутно" && truthValidation) {
       return (
         (minute +
           (hour && hour * 60) +
           (hour && day ? day * 24 : day * 60 * 24)) *
-        7
+        rate.price
       );
     }
-    return 0;
-  };
-
-  const sumRateDay = () => {
-    if (rate === "На сутки" && truthValidation) {
-      return day * 1999;
+    if (rate.name === "Суточный" && truthValidation) {
+      return day * rate.price;
     }
-    return 0;
+    return rate.price;
   };
 
   const sumPrice =
@@ -49,8 +50,11 @@ export const Price = () => {
     costFullTank.cost +
     costChildSeat.cost +
     costRightHandDriveCar.cost +
-    sumRateMinute() +
-    sumRateDay();
+    sumRate();
+
+  useEffect(() => {
+    dispatch(choosePrice(sumPrice));
+  }, [sumPrice]);
 
   return (
     <section className={style.section}>

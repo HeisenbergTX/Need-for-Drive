@@ -1,36 +1,38 @@
-import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { chooseRateCar } from "../../../store/optionalService/actions";
 import { getRateCar } from "../../../store/optionalService/selectors";
+import { getRates } from "../../../store/rates/selectors";
 import style from "./Rate.module.css";
 
 export const Rate = () => {
   const dispatch = useDispatch();
   const rateCar = useSelector(getRateCar);
-
-  const choosePerMinuteRate = () => dispatch(chooseRateCar("Поминутно"));
-
-  const chooseDayRate = () => dispatch(chooseRateCar("На сутки"));
+  const rates = useSelector(getRates);
 
   return (
     <section className={style.section}>
       <p className={style.title}>Тариф</p>
-      <label onClick={choosePerMinuteRate} className={style.customRadio}>
-        <input
-          type="radio"
-          name="rate"
-          defaultChecked={rateCar === "Поминутно"}
-        />
-        <span>Поминутно, 7 ₽/мин</span>
-      </label>
-      <label onClick={chooseDayRate} className={style.customRadio}>
-        <input
-          type="radio"
-          name="rate"
-          defaultChecked={rateCar === "На сутки"}
-        />
-        <span className={style.text}>На сутки, 1999 ₽/сутки</span>
-      </label>
+      {!!rates.length &&
+        rates.map((rate: any) => {
+          const chooseRate = () =>
+            dispatch(chooseRateCar(rate.id, rate.rateTypeId.name, rate.price));
+          return (
+            <label
+              key={rate.id}
+              onClick={chooseRate}
+              className={style.customRadio}
+            >
+              <input
+                type="radio"
+                name="rate"
+                defaultChecked={rate.rateTypeId.name === rateCar.name}
+              />
+              <span>
+                {rate.rateTypeId.name}, {rate.price} ₽/{rate.rateTypeId.unit}
+              </span>
+            </label>
+          );
+        })}
     </section>
   );
 };

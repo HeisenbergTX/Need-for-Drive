@@ -1,6 +1,6 @@
 import { RootState } from "../rootReducer";
 
-export const getColorCar = (state: RootState) => state.optionalService.color;
+export const getColorCar = (state: RootState) => state.optionalService.colorCar;
 
 export const getRentalPeriodCar = (state: RootState) =>
   state.optionalService.isRentalPeriod;
@@ -20,6 +20,8 @@ export const getRightHandDriveCar = (state: RootState) =>
 
 export const getOptions = (state: RootState) => state.optionalService;
 
-export const getDateFrom = (state: RootState) => state.optionalService.dateFrom;
+export const getDateFrom = (state: RootState) =>
+  state.optionalService.valueDateFrom;
 
-export const getDateTo = (state: RootState) => state.optionalService.dateTo;
+export const getDateTo = (state: RootState) =>
+  state.optionalService.valueDateTo;

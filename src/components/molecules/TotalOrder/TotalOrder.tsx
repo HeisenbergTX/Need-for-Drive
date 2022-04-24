@@ -1,27 +1,70 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./TotalOrder.module.css";
 import cn from "classnames";
 import { getOptions } from "../../../store/optionalService/selectors";
-import { getModelCar } from "../../../store/models/selectors";
+import { getModelCar, getModels } from "../../../store/models/selectors";
+import { useEffect } from "react";
+import { RequestStatusId } from "../../../store/statusId/actions";
+import { getStatusId } from "../../../store/statusId/selectors";
+import {
+  chooseColor,
+  chooseStatusId,
+} from "../../../store/compiledOrder/actions";
+import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
+import {
+  chooseCarId,
+  chooseDateFrom,
+  chooseDateTo,
+  chooseRateId,
+  chooseFullTank,
+  chooseChildChair,
+  chooseRightWheel,
+} from "../../../store/compiledOrder/actions";
 
 export const TotalOrder = () => {
+  const dispatch = useDispatch();
+  const statusId = useSelector(getStatusId);
+  const models = useSelector(getModels);
+  const colorCar = useSelector(getCompiledOrder);
   const selectedCar = useSelector(getModelCar);
   const completeOrder = useSelector(getOptions);
+  const car = useSelector(getModelCar);
 
-  let color;
+  useEffect(() => {
+    dispatch(
+      chooseStatusId(statusId.find((status: any) => status.name === "Новые"))
+    );
+    dispatch(chooseCarId(models.find((model: any) => model.id === car.id)));
+    dispatch(chooseDateFrom(Date.parse(completeOrder.valueDateFrom)));
+    dispatch(chooseDateTo(Date.parse(completeOrder.valueDateTo)));
+    dispatch(chooseRateId(completeOrder.rate));
+    dispatch(chooseFullTank(completeOrder.tank.fullTank));
+    dispatch(chooseChildChair(completeOrder.childSeat.childSeat));
+    dispatch(chooseRightWheel(completeOrder.rightHandDrive.rightHandDrive));
+  }, []);
+
+  let color: string;
   const reg = /\d{1,}/g;
 
-  if (selectedCar?.colors && completeOrder.color === "Любой") {
+  useEffect(() => {
+    dispatch(RequestStatusId());
+  }, []);
+
+  useEffect(() => {
+    dispatch(chooseColor(color));
+  }, []);
+
+  if (selectedCar?.colors && completeOrder.colorCar === "Любой") {
     const randomColorCar = Math.floor(
       Math.random() * selectedCar.colors.length
     );
     color = selectedCar.colors[randomColorCar];
   } else {
-    color = completeOrder.color;
+    color = completeOrder.colorCar;
   }
 
-  const convertDateFrom = new Date(completeOrder.dateFrom);
-  const convertDateTo = new Date(completeOrder.dateTo);
+  const convertDateFrom = new Date(completeOrder.valueDateFrom);
+  const convertDateTo = new Date(completeOrder.valueDateTo);
 
   return (
     <section className={style.section}>
@@ -38,7 +81,7 @@ export const TotalOrder = () => {
         </p>
         <p className={style.color}>
           <span className={style.orderItem}>Цвет</span>
-          {color}
+          {colorCar.color}
         </p>
         {completeOrder.childSeat.childSeat && (
           <div className={style.childSeat}>
@@ -51,13 +94,13 @@ export const TotalOrder = () => {
             ? "Правый руль"
             : "Левый руль"}
         </p>
-        {completeOrder.dateFrom && (
+        {completeOrder.valueDateFrom && (
           <p className={style.date}>
             <span className={style.orderItem}>Доступна с</span>
             {convertDateFrom.toLocaleString()}
           </p>
         )}
-        {completeOrder.dateTo && (
+        {completeOrder.valueDateTo && (
           <p className={style.date}>
             <span className={style.orderItem}>Доступна по</span>
             {convertDateTo.toLocaleString()}

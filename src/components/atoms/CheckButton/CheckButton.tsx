@@ -20,7 +20,7 @@ export const CheckButton = () => {
   const valueButton = useSelector(getToggleOrderConfirm);
 
   const fullnessCheck = [
-    orderInfo.color,
+    orderInfo.colorCar,
     orderInfo.rate,
     orderInfo.isRentalPeriod,
   ];

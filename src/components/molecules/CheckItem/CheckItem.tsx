@@ -27,7 +27,7 @@ export const CheckItem = () => {
     options.isRentalPeriod.dateFrom,
     options.isRentalPeriod.leaseTerm,
     options.rate,
-    options.color,
+    options.colorCar,
     location.pathname === "/order/options",
   ];
 
