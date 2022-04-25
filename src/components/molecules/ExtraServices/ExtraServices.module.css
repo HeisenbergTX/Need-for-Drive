@@ -31,6 +31,7 @@
 }
 
 .customСheсkbox > span {
+  margin-bottom: 6px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -53,7 +54,7 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
-  transition: 0.2s all;
+  transition: 0.3s all;
 }
 
 .customСheсkbox > input:not(:disabled):not(:checked) + span:hover::before {
