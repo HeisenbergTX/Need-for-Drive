@@ -1,0 +1,27 @@
+.checkItem {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.title {
+  margin: 0;
+  margin-right: 8px;
+  min-width: fit-content;
+  max-width: max-content;
+  width: 100%;
+  color: var(--main-black);
+}
+
+.dotted {
+  width: 100%;
+  height: 1px;
+  margin: 0 auto;
+  border-bottom: 1px dotted var(--gray-dark);
+}
+
+.text {
+  display: block;
+  min-width: max-content;
+  color: var(--gray-dark);
+}

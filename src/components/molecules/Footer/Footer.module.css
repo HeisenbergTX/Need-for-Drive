@@ -15,7 +15,7 @@
 }
 
 .telephone:hover {
-  color: var(--grey-white);
+  color: var(--gray-white);
 }
 
 .telephone:active {
@@ -25,7 +25,7 @@
 .copyright {
   margin: 0;
   margin-top: 8px;
-  color: var(--grey-white);
+  color: var(--gray-white);
 }
 
 @media (min-width: 540px) {
@@ -51,7 +51,7 @@
   }
 
   .copyright {
-    color: var(--grey-dark);
+    color: var(--gray-dark);
   }
 }
 

@@ -1,25 +1,48 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getPoint, getPoints } from "../../../store/point/selectors";
 import style from "./CheckButton.module.css";
-
-const btnCheck = [
-  {
-    id: 0,
-    text: "Выбрать модель",
-    path: "/order/models",
-  },
-];
+import { getModelCar } from "../../../store/models/selectors";
 
 export const CheckButton = () => {
+  let location = useLocation();
+  const points = useSelector(getPoints);
+  const point = useSelector(getPoint);
+  const modelCar = useSelector(getModelCar);
+
+  let activePoint = points.find((el) => el.address === point);
   return (
     <>
-      {btnCheck.map((el) => {
-        return (
-          <NavLink key={el.id} to={el.path}>
-            <button className={style.btnCheck}>{el.text}</button>
-          </NavLink>
-        );
-      })}
+      {location.pathname === "/order/place" && (
+        <NavLink to="/order/models">
+          <button
+            disabled={activePoint ? false : true}
+            className={style.btnCheck}
+          >
+            Выбрать модель
+          </button>
+        </NavLink>
+      )}
+      {location.pathname === "/order/models" && (
+        <NavLink to="/order/options">
+          <button
+            disabled={modelCar.name ? false : true}
+            className={style.btnCheck}
+          >
+            Дополнительно
+          </button>
+        </NavLink>
+      )}
+      {location.pathname === "/order/options" && (
+        <NavLink to="/order/result">
+          <button
+            disabled={modelCar.name ? false : true}
+            className={style.btnCheck}
+          >
+            Итого
+          </button>
+        </NavLink>
+      )}
     </>
   );
 };

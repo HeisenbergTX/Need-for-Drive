@@ -1,0 +1,21 @@
+.section {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.car {
+  min-width: 100%;
+}
+
+.disabled{
+  background: #000;
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-bottom: 120px;
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(2, 50%);
+  }
+}

@@ -1,0 +1,92 @@
+input[type="date"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  width: 8px;
+  height: 8px;
+  background: url("../../../icons/searchCleaning.png");
+  margin-right: 6px;
+  margin-bottom: 2px;
+  cursor: pointer;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+.section {
+  margin-top: 20px;
+  font-family: "Roboto-Light", sans-serif;
+  color: var(--main-black);
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.input {
+  padding: 0;
+  margin-left: 8px;
+  font-size: 12px;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid var(--gray-dark);
+  width: 150px;
+  text-overflow: ellipsis;
+}
+
+.inputDate:first-child {
+  margin-top: 0;
+}
+
+.inputDate {
+  display: flex;
+  align-items: flex-end;
+  margin-top: 8px;
+}
+
+.input:focus-visible {
+  outline-offset: 0px;
+  color: var(--gray-dark);
+}
+
+@media (min-width: 540px) {
+  .input {
+    width: 180px;
+  }
+}
+
+@media (min-width: 768px) {
+  .section {
+    margin-top: 25px;
+  }
+  .title {
+    margin-bottom: 14px;
+  }
+  .inputDate {
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    margin-top: 32px;
+  }
+  .title {
+    margin-bottom: 16px;
+  }
+  .inputDate {
+    margin-top: 10px;
+  }
+  .input {
+    font-size: 14px;
+  }
+}

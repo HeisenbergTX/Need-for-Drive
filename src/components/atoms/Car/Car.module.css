@@ -1,0 +1,73 @@
+.section {
+  transition: 0.2s all;
+  border: 1px solid var(--gray-white);
+  padding: 10px 16px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.section:hover {
+  background: var(--gray-white);
+}
+
+.section:active {
+  border: 1px solid var(--main-text-click);
+}
+
+.active {
+  border: 1px solid var(--main-text-accent);
+}
+
+.nameCar {
+  margin: 0;
+  font-size: 16px;
+}
+
+.price {
+  color: var(--gray-dark);
+  margin: 0;
+  font-size: 12px;
+}
+
+.wrapperImg {
+  min-width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.img {
+  width: 250px;
+  min-height: 100px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    min-height: 180px;
+  }
+  .nameCar {
+    font-size: 18px;
+  }
+  .price {
+    font-size: 14px;
+  }
+  .img {
+    height: 150px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .img {
+    min-width: 200px;
+    height: 130px;
+  }
+}
+
+@media (min-width: 1700px) {
+  .img {
+    min-width: 200px;
+    height: 170px;
+  }
+}

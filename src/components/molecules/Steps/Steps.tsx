@@ -1,27 +1,49 @@
-import React from "react";
 import style from "./Steps.module.css";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import cn from "classnames";
 
-import { Link } from "react-router-dom";
+import { getPoint, getPoints } from "../../../store/point/selectors";
+import { getModelCar } from "../../../store/models/selectors";
 
 export const Steps = () => {
+  const points = useSelector(getPoints);
+  const point = useSelector(getPoint);
+
+  const modelCar = useSelector(getModelCar);
+  let activePoint = points.find((el) => el.address === point);
+  const disabledNavLink = (e: any) => {
+    e.preventDefault();
+  };
+
   return (
     <section className={style.section}>
-      <Link className={cn(style.stepItem, style.activeStep)} to="/order/place">
+      <NavLink
+        className={cn(style.stepItem, { [style.passedPhase]: point })}
+        to="/order/place"
+      >
         Местоположение
-      </Link>
+      </NavLink>
       <span className={style.triangle} />
-      <Link className={style.stepItem} to="#">
+      <NavLink
+        onClick={activePoint ? () => {} : disabledNavLink}
+        className={cn(style.stepItem, { [style.passedPhase]: point })}
+        to="/order/models"
+      >
         Модель
-      </Link>
+      </NavLink>
       <span className={style.triangle} />
-      <Link className={style.stepItem} to="#">
+      <NavLink
+        onClick={modelCar.name ? () => {} : disabledNavLink}
+        className={cn(style.stepItem, { [style.passedPhase]: modelCar.id })}
+        to="/order/options"
+      >
         Дополнительно
-      </Link>
+      </NavLink>
       <span className={style.triangle} />
-      <Link className={style.stepItem} to="#">
+      <NavLink className={style.stepItem} to="/order/total">
         Итого
-      </Link>
+      </NavLink>
     </section>
   );
 };
