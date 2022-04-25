@@ -8,7 +8,8 @@ import { getModelCar, getModels } from "../../../store/models/selectors";
 import { ColorItem } from "../../atoms/ColorItem/ColorItem";
 import { RentalPeriodItem } from "../../atoms/RentalPeriodItem/RentalPeriodItem";
 import { RateItem } from "../../atoms/RateItem/RateItem";
-import { FullTank } from "../../atoms/FullTank/FullTank";
+import { ExtraServicesItem } from "../../atoms/ExtraServicesItem/ExtraServicesItem";
+import { getOptions } from "../../../store/optionalService/selectors";
 
 export const CheckItem = () => {
   let location = useLocation();
@@ -16,6 +17,21 @@ export const CheckItem = () => {
   const street = useSelector(getPoint);
   const modelCar = useSelector(getModelCar);
   const models = useSelector(getModels);
+  const options = useSelector(getOptions);
+
+  const arrayOptional = [
+    options.tank.fullTank,
+    options.childSeat.seat,
+    options.rightHandDrive.rightHandDrive,
+    options.isRentalPeriod.dateAt,
+    options.isRentalPeriod.dateFrom,
+    options.isRentalPeriod.leaseTerm,
+    options.rate,
+    options.color,
+    location.pathname === "/order/options",
+  ];
+
+  const checkOptionalTruth = arrayOptional.some((check) => check);
 
   return (
     <section className={style.section}>
@@ -36,12 +52,12 @@ export const CheckItem = () => {
           <span className={style.text}>{modelCar.name}</span>
         </div>
       )}
-      {location.pathname === "/order/options" && (
+      {checkOptionalTruth && (
         <>
           <ColorItem />
           <RentalPeriodItem />
           <RateItem />
-          <FullTank />
+          <ExtraServicesItem />
         </>
       )}
     </section>

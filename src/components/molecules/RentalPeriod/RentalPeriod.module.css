@@ -1,14 +1,12 @@
-input[type="date"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  width: 8px;
-  height: 8px;
-  background: url("../../../icons/searchCleaning.png");
-  margin-right: 6px;
-  margin-bottom: 2px;
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  transition: all 0.5s;
+  opacity: 0;
+  margin-left: 0;
   cursor: pointer;
 }
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
 }
 .section {
   margin-top: 20px;
@@ -26,6 +24,34 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   margin-bottom: 12px;
 }
 
+.clearBtn {
+  position: absolute;
+  right: 30px;
+  border: none;
+  background: transparent;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.clearBtn:before,
+.clearBtn:after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 1px;
+  background: #121212;
+}
+
+.clearBtn:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.clearBtn:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -33,6 +59,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .input {
+  cursor: pointer;
   padding: 0;
   margin-left: 8px;
   font-size: 12px;
@@ -43,11 +70,16 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   text-overflow: ellipsis;
 }
 
+.error {
+  border-bottom: 1px solid red;
+}
+
 .inputDate:first-child {
   margin-top: 0;
 }
 
 .inputDate {
+  position: relative;
   display: flex;
   align-items: flex-end;
   margin-top: 8px;

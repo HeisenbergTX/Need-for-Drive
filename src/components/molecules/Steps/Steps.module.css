@@ -10,7 +10,7 @@
 
 .stepItem {
   margin: 0;
-
+  cursor: default;
   text-decoration: none;
   color: var(--gray-dark);
   margin-left: 6px;
@@ -19,6 +19,7 @@
 
 .passedPhase {
   color: var(--main-black);
+  cursor: pointer;
 }
 
 .stepItem:first-child {

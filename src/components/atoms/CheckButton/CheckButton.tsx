@@ -3,12 +3,22 @@ import { useSelector } from "react-redux";
 import { getPoint, getPoints } from "../../../store/point/selectors";
 import style from "./CheckButton.module.css";
 import { getModelCar } from "../../../store/models/selectors";
+import {
+  getColorCar,
+  getOptions,
+  getRateCar,
+  getRentalPeriodCar,
+} from "../../../store/optionalService/selectors";
 
 export const CheckButton = () => {
   let location = useLocation();
   const points = useSelector(getPoints);
   const point = useSelector(getPoint);
   const modelCar = useSelector(getModelCar);
+  const orderInfo = useSelector(getOptions);
+
+  const fullnessCheck = [orderInfo.color, orderInfo.rate, orderInfo.isRentalPeriod];
+  const buttonActive = fullnessCheck.every((check) => check);
 
   let activePoint = points.find((el) => el.address === point);
   return (
@@ -36,7 +46,7 @@ export const CheckButton = () => {
       {location.pathname === "/order/options" && (
         <NavLink to="/order/result">
           <button
-            disabled={modelCar.name ? false : true}
+            disabled={buttonActive ? false : true}
             className={style.btnCheck}
           >
             Итого

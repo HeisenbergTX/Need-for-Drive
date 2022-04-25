@@ -13,7 +13,8 @@ export const ModelsCars = () => {
   const filterName = useSelector(getFilterName);
 
   useEffect(() => {
-    dispatch(FetchModelsRequest());
+    if(cars.length ===0){
+    dispatch(FetchModelsRequest());}
   }, []);
 
   return (

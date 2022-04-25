@@ -10,7 +10,7 @@ import {
 interface IState {
   pending: boolean;
   models: IModels[];
-  chooseModelCar: {};
+  chooseModelCar: { minPrice: number };
   filterName: string;
   error: null | string;
 }
@@ -18,7 +18,7 @@ interface IState {
 const initialState: IState = {
   pending: false,
   models: [],
-  chooseModelCar: {},
+  chooseModelCar: { minPrice: 0 },
   filterName: "Все модели",
   error: null,
 };
