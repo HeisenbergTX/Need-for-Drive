@@ -7,7 +7,7 @@ import models from "./models/reducers";
 import placemarks from "./placemarks/reducers";
 import optionalService from "./optionalService/reducers";
 
-import isOpenNav from "./isOpenNav/reducer";
+import modalWindows from "./modalWindows/reducers";
 
 const rootReducer = combineReducers({
   cities,
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   placemarks,
   optionalService,
 
-  isOpenNav,
+  modalWindows,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

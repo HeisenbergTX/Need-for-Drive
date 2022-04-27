@@ -4,7 +4,7 @@ import axios from "axios";
 import { FetchModelsSuccess, FetchModelsError } from "./actions";
 import { FETCH_MODELS_REQUEST } from "./types";
 
-const urlAddress = "https://api-factory.simbirsoft1.com/api/db/car?limit=2";
+const urlAddress = "https://api-factory.simbirsoft1.com/api/db/car?limit=10";
 
 const getModels = () =>
   axios.get(urlAddress, {

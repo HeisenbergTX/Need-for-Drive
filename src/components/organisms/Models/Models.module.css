@@ -8,6 +8,8 @@
 }
 
 .modelsCars {
+  height: 400px;
+  overflow-y: auto;
   margin-left: 16px;
   margin-right: 16px;
   margin-top: 25px;
@@ -28,6 +30,18 @@
   }
 }
 
+@media (min-width: 768px) {
+  .modelsCars {
+    height: 550px;
+  }
+}
+
+@media (min-width: 900px) {
+  .modelsCars {
+    height: 900px;
+  }
+}
+
 @media (min-width: 1024px) {
   .section {
     margin-top: 32px;
@@ -36,6 +50,7 @@
     margin: 0;
   }
   .modelsCars {
+    height: 100%;
     margin-left: 0;
     margin-right: 32px;
     margin-top: 48px;

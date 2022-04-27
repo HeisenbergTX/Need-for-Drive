@@ -20,7 +20,7 @@ export const ExtraServicesItem = () => {
           <span className={style.text}>Да</span>
         </div>
       )}
-      {getChildSeat.seat && (
+      {getChildSeat.childSeat && (
         <div className={style.checkItem}>
           <p className={style.title}>Детское кресло</p>
           <span className={style.dotted}></span>

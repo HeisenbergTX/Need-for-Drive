@@ -17,7 +17,6 @@ export const Steps = () => {
   const colorCar = useSelector(getColorCar);
   const rateCar = useSelector(getRateCar);
   const rentPeriod = useSelector(getRentalPeriodCar);
-  console.log(rentPeriod);
 
   const fullnessCheck = [colorCar, rateCar, rentPeriod];
   const stepActive = fullnessCheck.every((check) => check);

@@ -19,7 +19,9 @@ export const ChooseModelCar = (
   id: string,
   name: string,
   minPrice: number,
-  colors: string[]
+  colors: string[],
+  number: string,
+  image: any
 ) => ({
   type: CHOOSE_MODEL_CAR,
   payload: {
@@ -27,6 +29,8 @@ export const ChooseModelCar = (
     name,
     minPrice,
     colors,
+    number,
+    image
   },
 });
 

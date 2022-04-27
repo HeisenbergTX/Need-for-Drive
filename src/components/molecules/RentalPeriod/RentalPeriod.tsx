@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from "react-hook-form";
 import format from "dateformat";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 
@@ -14,20 +14,20 @@ import {
 import {
   getDateFrom,
   getDateTo,
+  getRateCar,
   getRentalPeriodCar,
 } from "../../../store/optionalService/selectors";
 
 export const RentalPeriod = () => {
   const dispatch = useDispatch();
   const rentalPeriod = useSelector(getRentalPeriodCar);
+  const rate = useSelector(getRateCar);
   const getValueDateFrom = useSelector(getDateFrom);
   const getValueDateTo = useSelector(getDateTo);
   const { register, handleSubmit, watch, setValue, resetField } = useForm();
 
   const [dateFrom, setDateFrom] = useState<Date>();
   const [dateAt, setDateAt] = useState<Date>();
-  const [clearDateFrom, setClearDateFrom] = useState<boolean>(false);
-
   const valueDateFrom = watch("dateFrom");
   const valueDateAt = watch("dateTo");
 
@@ -64,7 +64,7 @@ export const RentalPeriod = () => {
 
   useEffect(() => {
     difference();
-  }, [valueDateAt && valueDateFrom]);
+  }, [(valueDateAt && valueDateFrom) && rate]);
 
   useEffect(() => {
     if (valueDateFrom) {
@@ -83,8 +83,6 @@ export const RentalPeriod = () => {
     dateTo: getValueDateTo || "",
     dateFrom: getValueDateFrom || "",
   };
-
-  console.log(defaultValues);
 
   const form = useForm({
     defaultValues,

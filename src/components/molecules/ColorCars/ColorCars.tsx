@@ -14,7 +14,7 @@ export const ColorCars = () => {
   return (
     <section className={style.section}>
       <p className={style.title}>Цвет</p>
-      <div>
+      <div className={style.colorsItem}>
         <label onClick={chooseAnyColor} className={style.customRadio}>
           <input
             type="radio"
@@ -42,7 +42,9 @@ export const ColorCars = () => {
                     name="color"
                     defaultChecked={colorCar === color}
                   />
-                  <span className={style.text}>{color}</span>
+                  <span className={style.text}>
+                    {color[0].toUpperCase() + color.slice(1)}
+                  </span>
                 </label>
               );
             })}

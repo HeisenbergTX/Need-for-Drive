@@ -7,7 +7,7 @@ import cn from "classnames";
 import { Location } from "../../atoms/Location/Location";
 import { BurgerMenu } from "../../atoms/BurgerMenu/BurgerMenu";
 import { Navigation } from "../Navigation/Navigation";
-import { getIsOpenNav } from "../../../store/isOpenNav/selector";
+import { getIsOpenNav } from "../../../store/modalWindows/selectors";
 
 export const Header = () => {
   const isOpenNav = useSelector(getIsOpenNav);
