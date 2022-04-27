@@ -21,6 +21,7 @@ import {
   chooseCityId,
   choosePointId,
 } from "../../../store/compiledOrder/actions";
+import { RequestStatusId } from "../../../store/statusId/actions";
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,10 @@ export const Form = () => {
     if (points.length === 0) {
       dispatch(FetchPointsRequest());
     }
+  }, []);
+
+  useEffect(() => {
+    dispatch(RequestStatusId());
   }, []);
 
   return (

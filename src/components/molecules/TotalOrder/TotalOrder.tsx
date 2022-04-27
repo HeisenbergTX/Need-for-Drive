@@ -4,21 +4,19 @@ import cn from "classnames";
 import { getOptions } from "../../../store/optionalService/selectors";
 import { getModelCar, getModels } from "../../../store/models/selectors";
 import { useEffect } from "react";
-import { RequestStatusId } from "../../../store/statusId/actions";
 import { getStatusId } from "../../../store/statusId/selectors";
-import {
-  chooseColor,
-  chooseStatusId,
-} from "../../../store/compiledOrder/actions";
+
 import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
 import {
   chooseCarId,
+  chooseChildChair,
+  chooseColor,
   chooseDateFrom,
   chooseDateTo,
-  chooseRateId,
   chooseFullTank,
-  chooseChildChair,
+  chooseRateId,
   chooseRightWheel,
+  chooseStatusId,
 } from "../../../store/compiledOrder/actions";
 
 export const TotalOrder = () => {
@@ -45,10 +43,6 @@ export const TotalOrder = () => {
 
   let color: string;
   const reg = /\d{1,}/g;
-
-  useEffect(() => {
-    dispatch(RequestStatusId());
-  }, []);
 
   useEffect(() => {
     dispatch(chooseColor(color));
