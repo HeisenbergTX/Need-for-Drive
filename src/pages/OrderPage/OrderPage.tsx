@@ -13,17 +13,12 @@ export const OrderPage = () => {
   const isOpenNav = useSelector(getIsOpenNav);
   const pending = useSelector(getModelPendng);
 
-  window.onbeforeunload = function () {
-    sessionStorage.setItem("origin", window.location.href);
-  };
-  window.onload = function () {
-    if (window.location.href == sessionStorage.getItem("origin")) {
-      sessionStorage.clear();
-    }
-  };
+
 
   return (
-    <section className={cn(style.section, { [style.hide]: isOpenNav || pending})}>
+    <section
+      className={cn(style.section, { [style.hide]: isOpenNav || pending })}
+    >
       {pending && (
         <article className={style.loader}>
           <Loader />

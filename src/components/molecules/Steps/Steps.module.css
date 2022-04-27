@@ -24,6 +24,7 @@
 
 .stepItem:first-child {
   margin-left: 0;
+  cursor: pointer;
 }
 
 .stepItem:global.active {

@@ -3,6 +3,7 @@ import { ChooseModelCar } from "../../../store/models/actions";
 import { getModelCar } from "../../../store/models/selectors";
 import cn from "classnames";
 import style from "./Car.module.css";
+import { chooseColorCar } from "../../../store/optionalService/actions";
 
 interface IProps {
   id: string;
@@ -29,8 +30,10 @@ export const Car: React.FC<IProps> = ({
   const chooseCar = () => {
     if (modelCar.id === id) {
       dispatch(ChooseModelCar("", "", 0, [], "", null));
+      dispatch(chooseColorCar(""));
     } else {
       dispatch(ChooseModelCar(id, name, minPrice, colors, number, image));
+      dispatch(chooseColorCar(""));
     }
   };
 

@@ -54,6 +54,9 @@
 }
 
 @media (min-width: 540px) {
+  .section {
+    margin-left: 85px;
+  }
   .blockButtons {
     flex-direction: row;
   }
