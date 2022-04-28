@@ -1,11 +1,11 @@
-import { POST_ORDER, POST_ORDER_CREATOR } from "./types";
-import { call, takeLatest } from "redux-saga/effects";
+import { POST_ORDER_CREATOR } from "./types";
+import { call, put, takeLatest } from "redux-saga/effects";
 import axios from "axios";
+import { chooseIdOrder } from "./actions";
 
 const urlAddress = "https://api-factory.simbirsoft1.com/api/db/order/";
 
 const postOrder = (payload: any) => {
-  console.log(payload);
   return axios.post(
     urlAddress,
     {
@@ -30,8 +30,7 @@ interface ResGenerator {
 function* PostOrderSagaWorker({ payload }: any) {
   try {
     const res: ResGenerator = yield call(postOrder, payload);
-   
-    console.log(res.data.data);
+    yield put(chooseIdOrder(res.data.data.id));
   } catch (e: any) {
     console.log("error");
   }

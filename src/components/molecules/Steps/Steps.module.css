@@ -8,6 +8,13 @@
   overflow-x: auto;
 }
 
+.text {
+  margin: 0;
+  cursor: default;
+  font-size: 12px;
+  color: var(--main-black);
+}
+
 .stepItem {
   margin: 0;
   cursor: default;
@@ -60,5 +67,8 @@
   .stepItem {
     margin-left: 16px;
     margin-right: 16px;
+  }
+  .text {
+    font-size: 14px;
   }
 }

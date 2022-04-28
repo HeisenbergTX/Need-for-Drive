@@ -14,6 +14,7 @@ import {
   CHOOSE_CHILD_CHAIR,
   CHOOSE_RIGHT_WHEEL,
   POST_ORDER,
+  CHOOSE_ID_ORDER
 } from "./types";
 
 export const postOrder = (payload: any) => ({
@@ -83,5 +84,10 @@ export const chooseChildChair = (payload: boolean) => ({
 
 export const chooseRightWheel = (payload: boolean) => ({
   type: CHOOSE_RIGHT_WHEEL,
+  payload,
+});
+
+export const chooseIdOrder = (payload: string) => ({
+  type: CHOOSE_ID_ORDER,
   payload,
 });

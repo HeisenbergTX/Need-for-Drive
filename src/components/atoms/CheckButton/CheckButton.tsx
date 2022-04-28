@@ -1,5 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import cn from "classnames";
 import { getPoint, getPoints } from "../../../store/point/selectors";
 import style from "./CheckButton.module.css";
 import { getModelCar } from "../../../store/models/selectors";
@@ -7,6 +8,7 @@ import { getOptions } from "../../../store/optionalService/selectors";
 import { changeToogleOrderConfirm } from "../../../store/modalWindows/actions";
 import { getToggleOrderConfirm } from "../../../store/modalWindows/selectors";
 import { OrderConfirm } from "../OrderConfirm/OrderConfirm";
+import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
 
 export const CheckButton = () => {
   const dispatch = useDispatch();
@@ -15,8 +17,8 @@ export const CheckButton = () => {
   const point = useSelector(getPoint);
   const modelCar = useSelector(getModelCar);
   const orderInfo = useSelector(getOptions);
+  const idOrder = useSelector(getCompiledOrder);
 
-  
   const valueButton = useSelector(getToggleOrderConfirm);
 
   const fullnessCheck = [
@@ -65,9 +67,20 @@ export const CheckButton = () => {
         </NavLink>
       )}
       {location.pathname === "/order/total" && (
-        <NavLink to="/order/total">
-          <button onClick={clickPlaceOrder} className={style.btnCheck}>Заказать</button>
-        </NavLink>
+        <button
+          onClick={clickPlaceOrder}
+          className={cn(style.btnCheck, { [style.hide]: idOrder.idOrder })}
+        >
+          Заказать
+        </button>
+      )}
+      {idOrder.idOrder  && (
+        <button
+          onClick={clickPlaceOrder}
+          className={style.cancel}
+        >
+          Отменить
+        </button>
       )}
       {valueButton === true && (
         <article className={style.confirmOrder}>

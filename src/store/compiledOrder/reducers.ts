@@ -11,6 +11,7 @@ import {
   CHOOSE_FULL_TANK,
   CHOOSE_CHILD_CHAIR,
   CHOOSE_RIGHT_WHEEL,
+  CHOOSE_ID_ORDER,
 } from "./types";
 
 interface IState {
@@ -26,6 +27,7 @@ interface IState {
   isFullTank: boolean;
   isNeedChildChair: boolean;
   isRightWheel: boolean;
+  idOrder?: string;
 }
 
 const initialState: IState = {
@@ -107,6 +109,11 @@ export default (
       return {
         ...state,
         isRightWheel: payload,
+      };
+    case CHOOSE_ID_ORDER:
+      return {
+        ...state,
+        idOrder: payload,
       };
     default:
       return state;

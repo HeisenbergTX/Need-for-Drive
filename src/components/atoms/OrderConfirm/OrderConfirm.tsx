@@ -8,6 +8,9 @@ import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
 export const OrderConfirm = () => {
   const dispatch = useDispatch();
   const order = useSelector(getCompiledOrder);
+  if (order.idOrder) {
+    dispatch(changeToogleOrderConfirm(false));
+  }
   return (
     <section className={style.section}>
       <p className={style.title}>Подтвердить заказ</p>

@@ -27,6 +27,7 @@ export const TotalOrder = () => {
   const selectedCar = useSelector(getModelCar);
   const completeOrder = useSelector(getOptions);
   const car = useSelector(getModelCar);
+  const idOrder = useSelector(getCompiledOrder);
 
   useEffect(() => {
     dispatch(
@@ -63,6 +64,9 @@ export const TotalOrder = () => {
   return (
     <section className={style.section}>
       <div className={style.textInfo}>
+        {idOrder.idOrder && (
+          <h2 className={style.title}>Ваш заказ подтверждён</h2>
+        )}
         <p className={style.modelName}>{selectedCar.name}</p>
         <p className={style.numberCar}>
           {selectedCar.number
