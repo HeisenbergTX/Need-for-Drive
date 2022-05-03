@@ -11,6 +11,7 @@ import { getPlacemarks } from "../../../store/placemarks/selectors";
 import { getPoints } from "../../../store/point/selectors";
 import { getPoint } from "../../../store/point/selectors";
 import { getCity } from "../../../store/city/selectors";
+import { SelectedAddressCity } from "../../../store/city/actions";
 
 export const Maps = () => {
   let map: any;
@@ -62,6 +63,18 @@ export const Maps = () => {
             draggable: false,
             preset: "islands#greenCircleDotIcon",
           });
+          placemark.events.add("click", function () {
+            ymaps
+              .geocode(placemark.geometry._coordinates, {
+                results: 1,
+              })
+              .then((res: any) => {
+                const firstRevGeoObject = res.geoObjects.get(0);
+                dispatch(
+                  SelectedAddressCity(firstRevGeoObject.getLocalities()[0])
+                );
+              });
+          });
           dispatch(addPlacemarkCity(city, bounds));
           map.geoObjects.add(placemark);
         } catch (error: any) {
@@ -85,6 +98,18 @@ export const Maps = () => {
           let placemark = new ymaps.Placemark(coordinates, null, {
             draggable: false,
             preset: "islands#greenCircleDotIcon",
+          });
+          placemark.events.add("click", function () {
+            ymaps
+              .geocode(placemark.geometry._coordinates, {
+                results: 1,
+              })
+              .then((res: any) => {
+                const firstRevGeoObject = res.geoObjects.get(0);
+                dispatch(
+                  SelectedAddressCity(firstRevGeoObject.getLocalities()[0])
+                );
+              });
           });
           dispatch(addPlacemark(address, bounds));
           map.geoObjects.add(placemark);
