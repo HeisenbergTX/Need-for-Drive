@@ -4,24 +4,32 @@ import cn from "classnames";
 import { getOptions } from "../../../store/optionalService/selectors";
 import { getModelCar, getModels } from "../../../store/models/selectors";
 import { useEffect } from "react";
-import { getStatusId } from "../../../store/statusId/selectors";
 
 import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
 import {
   chooseCarId,
   chooseChildChair,
+  chooseCityId,
   chooseColor,
   chooseDateFrom,
   chooseDateTo,
   chooseFullTank,
+  choosePointId,
   chooseRateId,
   chooseRightWheel,
   chooseStatusId,
 } from "../../../store/compiledOrder/actions";
+import { getPoint, getPoints } from "../../../store/point/selectors";
+import { getCities, getCity } from "../../../store/city/selectors";
+import { getStatusId } from "../../../store/statusId/selectors";
 
 export const TotalOrder = () => {
   const dispatch = useDispatch();
   const statusId = useSelector(getStatusId);
+  const points = useSelector(getPoints);
+  const cities = useSelector(getCities);
+  const point = useSelector(getPoint);
+  const city = useSelector(getCity);
   const models = useSelector(getModels);
   const colorCar = useSelector(getCompiledOrder);
   const selectedCar = useSelector(getModelCar);
@@ -29,7 +37,19 @@ export const TotalOrder = () => {
   const car = useSelector(getModelCar);
   const idOrder = useSelector(getCompiledOrder);
 
+  const cityId = cities.find((cityId) => {
+    return cityId.name == city;
+  });
+  const pointId = points.find((pointId) => {
+    return pointId.address == point;
+  });
+
+  let color: string;
+
   useEffect(() => {
+    dispatch(chooseColor(color));
+    dispatch(chooseCityId(cityId!));
+    dispatch(choosePointId(pointId!));
     dispatch(
       chooseStatusId(statusId.find((status: any) => status.name === "Новые"))
     );
@@ -42,12 +62,7 @@ export const TotalOrder = () => {
     dispatch(chooseRightWheel(completeOrder.rightHandDrive.rightHandDrive));
   }, []);
 
-  let color: string;
   const reg = /\d{1,}/g;
-
-  useEffect(() => {
-    dispatch(chooseColor(color));
-  }, []);
 
   if (selectedCar?.colors && completeOrder.colorCar === "Любой") {
     const randomColorCar = Math.floor(
@@ -61,10 +76,17 @@ export const TotalOrder = () => {
   const convertDateFrom = new Date(completeOrder.valueDateFrom);
   const convertDateTo = new Date(completeOrder.valueDateTo);
 
+  const arrOrderIdOutput = [
+    idOrder.idOrder,
+    idOrder.orderStatusId.name === "Подтвержденные",
+  ];
+
+  const orderIdOutput = arrOrderIdOutput.every((check) => check);
+
   return (
     <section className={style.section}>
       <div className={style.textInfo}>
-        {idOrder.idOrder && (
+        {orderIdOutput && (
           <h2 className={style.title}>Ваш заказ подтверждён</h2>
         )}
         <p className={style.modelName}>{selectedCar.name}</p>
@@ -105,11 +127,7 @@ export const TotalOrder = () => {
           </p>
         )}
       </div>
-      <img
-        className={style.img}
-        src={selectedCar.image}
-        alt={"photo: yourCar"}
-      />
+      <img className={style.img} src={selectedCar.image} alt={"imageCar"} />
     </section>
   );
 };

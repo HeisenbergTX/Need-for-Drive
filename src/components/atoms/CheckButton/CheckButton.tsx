@@ -1,23 +1,34 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { useNavigate, NavLink, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import cn from "classnames";
 import { getPoint, getPoints } from "../../../store/point/selectors";
 import style from "./CheckButton.module.css";
 import { getModelCar } from "../../../store/models/selectors";
 import { getOptions } from "../../../store/optionalService/selectors";
-import { changeToogleOrderConfirm } from "../../../store/modalWindows/actions";
+import {
+  changeIsOpenHide,
+  changeToogleOrderConfirm,
+} from "../../../store/modalWindows/actions";
 import { getToggleOrderConfirm } from "../../../store/modalWindows/selectors";
 import { OrderConfirm } from "../OrderConfirm/OrderConfirm";
 import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
+import { useEffect } from "react";
+import {
+  chooseStatusId,
+  postOrderCreator,
+} from "../../../store/compiledOrder/actions";
+import { getStatusId } from "../../../store/statusId/selectors";
 
 export const CheckButton = () => {
-  const dispatch = useDispatch();
   let location = useLocation();
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
   const points = useSelector(getPoints);
   const point = useSelector(getPoint);
   const modelCar = useSelector(getModelCar);
   const orderInfo = useSelector(getOptions);
-  const idOrder = useSelector(getCompiledOrder);
+  const order = useSelector(getCompiledOrder);
+  const statusId = useSelector(getStatusId);
 
   const valueButton = useSelector(getToggleOrderConfirm);
 
@@ -32,16 +43,29 @@ export const CheckButton = () => {
 
   const clickPlaceOrder = () => {
     dispatch(changeToogleOrderConfirm(true));
+    dispatch(postOrderCreator(order));
   };
+
+  const arrOrderIdOutput = [
+    order.idOrder,
+    order.orderStatusId.name === "Подтвержденные",
+  ];
+
+  const orderIdOutput = arrOrderIdOutput.every((check) => check);
+
+  useEffect(() => {
+    if (orderIdOutput) {
+      navigate(`/order/total/id${orderIdOutput && order.idOrder}`);
+    }
+  }, [order.idOrder]);
+
+  const buttonNone = cn(style.btnCheck, { [style.buttonNone]: orderIdOutput });
 
   return (
     <>
       {location.pathname === "/order/place" && (
         <NavLink to="/order/models">
-          <button
-            disabled={activePoint ? false : true}
-            className={style.btnCheck}
-          >
+          <button disabled={activePoint ? false : true} className={buttonNone}>
             Выбрать модель
           </button>
         </NavLink>
@@ -50,7 +74,7 @@ export const CheckButton = () => {
         <NavLink to="/order/options">
           <button
             disabled={modelCar.name ? false : true}
-            className={style.btnCheck}
+            className={buttonNone}
           >
             Дополнительно
           </button>
@@ -58,30 +82,17 @@ export const CheckButton = () => {
       )}
       {location.pathname === "/order/options" && (
         <NavLink to="/order/total">
-          <button
-            disabled={buttonActive ? false : true}
-            className={style.btnCheck}
-          >
+          <button disabled={buttonActive ? false : true} className={buttonNone}>
             Итого
           </button>
         </NavLink>
       )}
       {location.pathname === "/order/total" && (
-        <button
-          onClick={clickPlaceOrder}
-          className={cn(style.btnCheck, { [style.hide]: idOrder.idOrder })}
-        >
+        <button onClick={clickPlaceOrder} className={buttonNone}>
           Заказать
         </button>
       )}
-      {idOrder.idOrder  && (
-        <button
-          onClick={clickPlaceOrder}
-          className={style.cancel}
-        >
-          Отменить
-        </button>
-      )}
+      {orderIdOutput && <button className={style.cancel}>Отменить</button>}
       {valueButton === true && (
         <article className={style.confirmOrder}>
           <OrderConfirm />

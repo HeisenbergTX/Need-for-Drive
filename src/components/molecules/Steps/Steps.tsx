@@ -29,12 +29,19 @@ export const Steps = () => {
     e.preventDefault();
   };
 
+  const arrOrderIdOutput = [
+    idOrder.orderStatusId.name === "Подтвержденные",
+    idOrder.idOrder !== idOrder.orderStatusId.id,
+  ];
+
+  const orderIdOutput = arrOrderIdOutput.every((check) => check);
+
   return (
     <section className={style.section}>
-      {idOrder.idOrder && (
+      {orderIdOutput && (
         <p className={style.text}>Заказ номер {idOrder.idOrder}</p>
       )}
-      {idOrder.idOrder === undefined && (
+      {!orderIdOutput && (
         <>
           <NavLink
             className={cn(style.stepItem, { [style.passedPhase]: point })}
