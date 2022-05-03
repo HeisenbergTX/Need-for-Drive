@@ -21,10 +21,7 @@ export const OrderConfirm = () => {
   const isOpenHide = useSelector(getIsOpenHide);
   const statusId = useSelector(getStatusId);
 
-  if (
-    order.orderStatusId.name === "Подтвержденные" &&
-    order.idOrder !== order.orderStatusId.id
-  ) {
+  if (order.idOrder) {
     dispatch(changeToogleOrderConfirm(false));
     dispatch(changeIsOpenHide(false));
   }
@@ -55,11 +52,10 @@ export const OrderConfirm = () => {
       <p className={style.title}>Подтвердить заказ</p>
       <div className={style.blockButtons}>
         <button
-          disabled={order.idOrder ? false : true}
           onClick={clickConfirm}
           className={cn(style.confirm, style.button)}
         >
-          {order.idOrder ? "Подтвердить" : "Сбор данных..."}
+          Подтвердить
         </button>
         <button
           onClick={() => dispatch(changeToogleOrderConfirm(false))}

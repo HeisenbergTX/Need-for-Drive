@@ -50,9 +50,6 @@ export const TotalOrder = () => {
     dispatch(chooseColor(color));
     dispatch(chooseCityId(cityId!));
     dispatch(choosePointId(pointId!));
-    dispatch(
-      chooseStatusId(statusId.find((status: any) => status.name === "Новые"))
-    );
     dispatch(chooseCarId(models.find((model: any) => model.id === car.id)));
     dispatch(chooseDateFrom(Date.parse(completeOrder.valueDateFrom)));
     dispatch(chooseDateTo(Date.parse(completeOrder.valueDateTo)));

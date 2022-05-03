@@ -31,7 +31,7 @@ export const Steps = () => {
 
   const arrOrderIdOutput = [
     idOrder.orderStatusId.name === "Подтвержденные",
-    idOrder.idOrder !== idOrder.orderStatusId.id,
+    idOrder.idOrder,
   ];
 
   const orderIdOutput = arrOrderIdOutput.every((check) => check);

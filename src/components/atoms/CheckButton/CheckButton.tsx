@@ -14,8 +14,9 @@ import { OrderConfirm } from "../OrderConfirm/OrderConfirm";
 import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
 import { useEffect } from "react";
 import {
+  chooseIdOrder,
   chooseStatusId,
-  postOrderCreator,
+  postOrder,
 } from "../../../store/compiledOrder/actions";
 import { getStatusId } from "../../../store/statusId/selectors";
 
@@ -43,7 +44,11 @@ export const CheckButton = () => {
 
   const clickPlaceOrder = () => {
     dispatch(changeToogleOrderConfirm(true));
-    dispatch(postOrderCreator(order));
+  };
+
+  const clickCancelOrder = () => {
+    navigate(`/order/total`);
+    window.location.reload();
   };
 
   const arrOrderIdOutput = [
@@ -92,7 +97,11 @@ export const CheckButton = () => {
           Заказать
         </button>
       )}
-      {orderIdOutput && <button className={style.cancel}>Отменить</button>}
+      {orderIdOutput && (
+        <button onClick={clickCancelOrder} className={style.cancel}>
+          Отменить
+        </button>
+      )}
       {valueButton === true && (
         <article className={style.confirmOrder}>
           <OrderConfirm />
