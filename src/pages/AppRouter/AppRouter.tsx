@@ -14,7 +14,7 @@ export const AppRouter = () => {
 
   const arrOrderIdOutput = [
     idOrder.idOrder,
-    idOrder.orderStatusId.name === "Подтвержденные",
+    idOrder.orderStatusId?.name === "Подтвержденные",
   ];
 
   const orderIdOutput = arrOrderIdOutput.every((check) => check);
@@ -28,7 +28,7 @@ export const AppRouter = () => {
         <Route path="order/options" element={<OptionalExtras />} />
         <Route path="order/total" element={<Total />} />
         <Route
-          path={`order/total/id${orderIdOutput && idOrder.idOrder}`}
+          path={`order/total/?id=${orderIdOutput && idOrder.idOrder}`}
           element={<Total />}
         />
       </Route>

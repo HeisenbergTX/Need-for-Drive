@@ -10,6 +10,7 @@ import { RentalPeriodItem } from "../../atoms/RentalPeriodItem/RentalPeriodItem"
 import { RateItem } from "../../atoms/RateItem/RateItem";
 import { ExtraServicesItem } from "../../atoms/ExtraServicesItem/ExtraServicesItem";
 import { getOptions } from "../../../store/optionalService/selectors";
+import { getOrder } from "../../../store/compiledOrder/selectors";
 
 export const CheckItem = () => {
   let location = useLocation();
@@ -18,6 +19,7 @@ export const CheckItem = () => {
   const modelCar = useSelector(getModelCar);
   const models = useSelector(getModels);
   const options = useSelector(getOptions);
+  const order = useSelector(getOrder);
 
   const arrayOptional = [
     options.tank.fullTank,
@@ -30,6 +32,10 @@ export const CheckItem = () => {
     options.colorCar,
     location.pathname === "/order/options",
   ];
+
+  const arrInfoCar = [models.length, order.orderData?.carId];
+
+  const infoCar = arrInfoCar.some((check) => check);
 
   const checkOptionalTruth = arrayOptional.some((check) => check);
 
@@ -45,13 +51,14 @@ export const CheckItem = () => {
           </span>
         </span>
       </div>
-      {models.length > 0 && (
+      {infoCar && (
         <div className={style.checkItem}>
           <p className={style.title}>Модель</p>
           <span className={style.dotted}></span>
           <span className={style.text}>{modelCar.name}</span>
         </div>
       )}
+
       {checkOptionalTruth && (
         <>
           <ColorItem />

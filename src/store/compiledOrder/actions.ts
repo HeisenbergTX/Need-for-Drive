@@ -14,7 +14,9 @@ import {
   CHOOSE_CHILD_CHAIR,
   CHOOSE_RIGHT_WHEEL,
   POST_ORDER,
-  CHOOSE_ID_ORDER
+  CHOOSE_ID_ORDER,
+  GET_ORDER,
+  SUCCESS_ORDER,
 } from "./types";
 
 export const postOrder = (payload: any) => ({
@@ -24,6 +26,16 @@ export const postOrder = (payload: any) => ({
 
 export const postOrderCreator = (payload: any) => ({
   type: POST_ORDER_CREATOR,
+  payload,
+});
+
+export const getOrder = (payload: any) => ({
+  type: GET_ORDER,
+  payload,
+});
+
+export const successOrder = (payload: any) => ({
+  type: SUCCESS_ORDER,
   payload,
 });
 
