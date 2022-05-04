@@ -6,37 +6,40 @@ import {
   CHOOSE_FULL_TANK_CAR,
   CHOOSE_CHILD_SEAT_CAR,
   CHOOSE_RIGHT_HAND_DRIVE_CAR,
-  CHOOSE_DATE_TO,
-  CHOOSE_DATE_FROM,
+  CHOOSE_VALUE_DATE_TO,
+  CHOOSE_VALUE_DATE_FROM,
 } from "./types";
 
 interface IState {
-  color: string;
+  colorCar: string;
   isRentalPeriod: string;
-  dateTo: string;
-  dateFrom: string;
+  valueDateTo: string;
+  valueDateFrom: string;
   timesRent: {
     minutes: number;
     hours: number;
     days: number;
   };
-  rate: string;
+  rate: { name: string; price: number };
   tank: { fullTank: boolean; cost: number };
   childSeat: { seat: boolean; cost: number };
   rightHandDrive: { rightHandDrive: boolean; cost: number };
 }
 
 const inititalState: IState = {
-  color: "",
+  colorCar: "",
   isRentalPeriod: "",
-  dateTo: "",
-  dateFrom: "",
+  valueDateTo: "",
+  valueDateFrom: "",
   timesRent: {
     minutes: 0,
     hours: 0,
     days: 0,
   },
-  rate: "",
+  rate: {
+    name: "",
+    price: 0,
+  },
   tank: { fullTank: false, cost: 0 },
   childSeat: { seat: false, cost: 0 },
   rightHandDrive: { rightHandDrive: false, cost: 0 },
@@ -50,22 +53,22 @@ export default (
     case CHOOSE_COLOR_CAR:
       return {
         ...state,
-        color: payload,
+        colorCar: payload,
       };
     case CHOOSE_RENTAL_PERIOD_CAR:
       return {
         ...state,
         isRentalPeriod: payload,
       };
-    case CHOOSE_DATE_FROM:
+    case CHOOSE_VALUE_DATE_FROM:
       return {
         ...state,
-        dateFrom: payload,
+        valueDateFrom: payload,
       };
-    case CHOOSE_DATE_TO:
+    case CHOOSE_VALUE_DATE_TO:
       return {
         ...state,
-        dateTo: payload,
+        valueDateTo: payload,
       };
     case CHOOSE_TIMES_RENT_CAR:
       return {
@@ -78,7 +81,10 @@ export default (
     case CHOOSE_RATE_CAR:
       return {
         ...state,
-        rate: payload,
+        rate: {
+          ...state.rate,
+          ...payload,
+        },
       };
     case CHOOSE_FULL_TANK_CAR:
       return {

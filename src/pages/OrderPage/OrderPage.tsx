@@ -13,8 +13,6 @@ export const OrderPage = () => {
   const isOpenNav = useSelector(getIsOpenNav);
   const pending = useSelector(getModelPendng);
 
-
-
   return (
     <section
       className={cn(style.section, { [style.hide]: isOpenNav || pending })}

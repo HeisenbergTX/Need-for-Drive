@@ -4,3 +4,5 @@ export const getIsOpenNav = (state: RootState) => state.modalWindows.isOpenNav;
 
 export const getToggleOrderConfirm = (state: RootState) =>
   state.modalWindows.buttonConfirmOrder;
+
+  export const getIsOpenHide = (state:RootState) => state.modalWindows.isOpenHide

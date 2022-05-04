@@ -1,71 +1,86 @@
 .section {
-    font-family: "Roboto-Regula", sans-serif;
-    color: var(--main-black);
-    font-size: 14px;
+  font-family: "Roboto-Regular", sans-serif;
+  color: var(--main-black);
+  font-size: 14px;
+}
+
+.title {
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.modelName {
+  margin: 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.numberCar {
+  display: inline-block;
+  margin: 0;
+  padding: 4px 8px;
+  border: 1px solid var(--gray-dark);
+  border-radius: 4px;
+}
+
+.tankCar,
+.date,
+.childSeat,
+.rightHandDrive,
+.color {
+  margin: 0;
+  margin-bottom: 8px;
+  font-family: "Roboto-Light", sans-serif;
+}
+
+.tankCar {
+  margin-top: 8px;
+}
+
+.orderItem {
+  font-family: "Roboto-Bold", sans-serif;
+  margin-right: 6px;
+}
+
+.img {
+  display: block;
+  margin: 20px auto;
+  width: 250px;
+  min-height: 120px;
+  max-height: 150px;
+}
+
+@media (min-width: 540px) {
+  .section {
+    margin-top: 25px;
+    margin-bottom: 20px;
   }
-  
-  .modelName {
-    margin: 0;
-    margin-bottom: 8px;
-    font-size: 18px;
+}
+
+@media (min-width: 768px) {
+  .section {
+    display: flex;
+    justify-content: space-between;
   }
-  
-  .numberCar {
-    display: inline-block;
-    margin: 0;
-    padding: 4px 8px;
-    border: 1px solid var(--gray-dark);
-    border-radius: 4px;
-  }
-  
-  .tankCar,
-  .date,
-  .childSeat,
-  .rightHandDrive,
-  .color {
-    margin: 0;
-    margin-bottom: 8px;
-    font-family: "Roboto-Light", sans-serif;
-  }
-  
-  .tankCar {
-    margin-top: 8px;
-  }
-  
-  .orderItem {
-    font-family: "Roboto-Bold", sans-serif;
-    margin-right: 6px;
-  }
-  
   .img {
-    display: block;
-    margin: 20px auto;
-    width: 250px;
-    min-height: 120px;
-    max-height: 150px;
+    margin: 0;
   }
-  
-  @media (min-width: 540px) {
-    .section {
-      margin-top: 25px;
-      margin-bottom: 20px;
-    }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    margin-top: 32px;
+    max-width: 600px;
   }
-  
-  @media (min-width: 768px) {
-    .section {
-      display: flex;
-      justify-content: space-between;
-    }
-    .img {
-      margin: 0;
-    }
+  .title {
+    margin-bottom: 16px;
   }
-  
-  @media (min-width: 1024px) {
-    .section {
-      margin-top: 32px;
-      max-width: 600px;
-    }
+}
+
+@media (min-width: 1200px) {
+  .title {
+    font-size: 24px;
   }
-  
+}

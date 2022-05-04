@@ -6,8 +6,8 @@ import {
   CHOOSE_FULL_TANK_CAR,
   CHOOSE_CHILD_SEAT_CAR,
   CHOOSE_RIGHT_HAND_DRIVE_CAR,
-  CHOOSE_DATE_FROM,
-  CHOOSE_DATE_TO,
+  CHOOSE_VALUE_DATE_FROM,
+  CHOOSE_VALUE_DATE_TO,
 } from "./types";
 
 export const chooseColorCar = (payload: string) => ({
@@ -33,9 +33,13 @@ export const chooseTimesRent = (
   },
 });
 
-export const chooseRateCar = (payload: string) => ({
+export const chooseRateCar = (id: string, name: string, price: number) => ({
   type: CHOOSE_RATE_CAR,
-  payload,
+  payload: {
+    id,
+    name,
+    price,
+  },
 });
 
 export const chooseFullTankCar = (fullTank: boolean, cost: number) => ({
@@ -65,12 +69,12 @@ export const chooseRightHandDriveCar = (
   },
 });
 
-export const chooseDateFrom = (payload: string) => ({
-  type: CHOOSE_DATE_FROM,
+export const chooseValueDateFrom = (payload: string) => ({
+  type: CHOOSE_VALUE_DATE_FROM,
   payload,
 });
 
-export const chooseDateTo = (payload: string) => ({
-  type: CHOOSE_DATE_TO,
+export const chooseValueDateTo = (payload: string) => ({
+  type: CHOOSE_VALUE_DATE_TO,
   payload,
 });

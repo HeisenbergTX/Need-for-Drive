@@ -44,3 +44,20 @@ export interface IModels {
   colors: string[];
   id: string;
 }
+
+export interface IStatusId {
+  name: string;
+  id: string;
+}
+
+export interface IRate {
+  updatedAt: number;
+  createdAt: number;
+  id: string;
+  price: number;
+  rateTypeId: {
+    unit: string;
+    id: string;
+    name: string;
+  };
+}

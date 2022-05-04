@@ -17,6 +17,11 @@ import { Point } from "../../atoms/Point/Point";
 import { getCities, getCity } from "../../../store/city/selectors";
 import { getPoint } from "../../../store/point/selectors";
 import { getPoints } from "../../../store/point/selectors";
+import {
+  chooseCityId,
+  choosePointId,
+} from "../../../store/compiledOrder/actions";
+import { RequestStatusId } from "../../../store/statusId/actions";
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -24,6 +29,20 @@ export const Form = () => {
   const points = useSelector(getPoints);
   const city = useSelector(getCity);
   const point = useSelector(getPoint);
+
+  if (point) {
+    const cityId = cities.find((cityId) => {
+      return cityId.name == city;
+    });
+    dispatch(chooseCityId(cityId!));
+  }
+
+  if (point) {
+    const pointId = points.find((pointId) => {
+      return pointId.address == point;
+    });
+    dispatch(choosePointId(pointId!));
+  }
 
   const cityHandler = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(SelectedAddressCity(e.target.value));
@@ -46,6 +65,10 @@ export const Form = () => {
     if (points.length === 0) {
       dispatch(FetchPointsRequest());
     }
+  }, []);
+
+  useEffect(() => {
+    dispatch(RequestStatusId());
   }, []);
 
   return (

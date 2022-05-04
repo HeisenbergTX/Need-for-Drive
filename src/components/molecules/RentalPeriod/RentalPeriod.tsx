@@ -8,8 +8,8 @@ import style from "./RentalPeriod.module.css";
 import {
   chooseRentalPeriodCar,
   chooseTimesRent,
-  chooseDateFrom,
-  chooseDateTo,
+  chooseValueDateFrom,
+  chooseValueDateTo,
 } from "../../../store/optionalService/actions";
 import {
   getDateFrom,
@@ -57,14 +57,14 @@ export const RentalPeriod = () => {
 
   useEffect(() => {
     if (valueDateFrom && valueDateAt) {
-      dispatch(chooseDateFrom(valueDateFrom));
-      dispatch(chooseDateTo(valueDateAt));
+      dispatch(chooseValueDateFrom(valueDateFrom));
+      dispatch(chooseValueDateTo(valueDateAt));
     }
   }, [valueDateFrom && valueDateAt]);
 
   useEffect(() => {
     difference();
-  }, [(valueDateAt && valueDateFrom) && rate]);
+  }, [valueDateAt && valueDateFrom && rate]);
 
   useEffect(() => {
     if (valueDateFrom) {
@@ -102,11 +102,11 @@ export const RentalPeriod = () => {
   }, [defaultValues.dateTo]);
 
   const clickFromHandler = () => {
-    dispatch(chooseDateFrom(""));
+    dispatch(chooseValueDateFrom(""));
     resetField("dateFrom");
   };
   const clickToHandler = () => {
-    dispatch(chooseDateTo(""));
+    dispatch(chooseValueDateTo(""));
     resetField("dateTo");
   };
 

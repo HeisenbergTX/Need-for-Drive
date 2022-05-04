@@ -40,7 +40,10 @@ export default (
         models: payload.models,
       };
     case GET_FILTER_NAME:
-      return { ...state, filterName: payload };
+      return {
+        ...state,
+        filterName: payload,
+      };
     case CHOOSE_MODEL_CAR:
       return {
         ...state,

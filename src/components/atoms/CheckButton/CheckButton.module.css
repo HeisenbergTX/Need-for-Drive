@@ -6,7 +6,6 @@
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
-  background: var(--gray-white);
   color: var(--main-white);
 }
 
@@ -36,8 +35,38 @@
   background: var(--main-accent-click);
 }
 
+.hide {
+  display: none;
+}
+
+.cancel {
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  border: 0;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--main-white);
+  background: linear-gradient(90deg, #493013 0%, #7b0c3b 100%);
+}
+
+.cancel:hover {
+  background: linear-gradient(90deg, #2e1e0c 0%, #5f0a2d 100%);
+}
+
+.cancel:active {
+  background: linear-gradient(90deg, #2e1e0c 0%, #470722 100%);
+}
+
 @media (min-width: 540px) {
   .btnCheck {
+    margin-bottom: 50px;
+    width: 250px;
+    height: 48px;
+    border-radius: 10px;
+  }
+  .cancel {
     margin-bottom: 50px;
     width: 250px;
     height: 48px;
@@ -47,6 +76,9 @@
 
 @media (min-width: 1024px) {
   .btnCheck {
+    margin-bottom: 0;
+  }
+  .cancel {
     margin-bottom: 0;
   }
 }
