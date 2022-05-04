@@ -106,11 +106,8 @@ export const TotalOrder = () => {
     color = completeOrder.colorCar;
   }
 
-  const convertDateFrom =
-    new Date(order.orderData?.dateFrom) ||
-    new Date(completeOrder.valueDateFrom);
-  const convertDateTo =
-    new Date(order.orderData?.dateTo) || new Date(completeOrder.valueDateTo);
+  const convertDateFrom = new Date(completeOrder.valueDateFrom);
+  const convertDateTo = new Date(completeOrder.valueDateTo);
 
   const arrOrderIdOutput = [
     idOrder.idOrder,
@@ -156,18 +153,20 @@ export const TotalOrder = () => {
             ? "Правый руль"
             : "Левый руль"}
         </p>
-        {convertDateFrom && (
-          <p className={style.date}>
-            <span className={style.orderItem}>Доступна с</span>
-            {convertDateFrom.toLocaleString()}
-          </p>
-        )}
-        {convertDateTo && (
-          <p className={style.date}>
-            <span className={style.orderItem}>Доступна по</span>
-            {convertDateTo.toLocaleString()}
-          </p>
-        )}
+
+        <p className={style.date}>
+          <span className={style.orderItem}>Доступна с</span>
+          {completeOrder.valueDateFrom
+            ? convertDateFrom.toLocaleString()
+            : new Date(order.orderData?.dateTo).toLocaleString()}
+        </p>
+
+        <p className={style.date}>
+          <span className={style.orderItem}>Доступна по</span>
+          {completeOrder.valueDateTo
+            ? convertDateTo.toLocaleString()
+            : new Date(order.orderData?.dateTo).toLocaleString()}
+        </p>
       </div>
       <img className={style.img} src={selectedCar.image} alt={"imageCar"} />
     </section>
