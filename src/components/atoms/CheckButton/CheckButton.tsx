@@ -5,19 +5,12 @@ import { getPoint, getPoints } from "../../../store/point/selectors";
 import style from "./CheckButton.module.css";
 import { getModelCar } from "../../../store/models/selectors";
 import { getOptions } from "../../../store/optionalService/selectors";
-import {
-  changeIsOpenHide,
-  changeToogleOrderConfirm,
-} from "../../../store/modalWindows/actions";
+import { changeToogleOrderConfirm } from "../../../store/modalWindows/actions";
 import { getToggleOrderConfirm } from "../../../store/modalWindows/selectors";
 import { OrderConfirm } from "../OrderConfirm/OrderConfirm";
 import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
 import { useEffect } from "react";
-import {
-  chooseIdOrder,
-  chooseStatusId,
-  postOrder,
-} from "../../../store/compiledOrder/actions";
+
 import { getStatusId } from "../../../store/statusId/selectors";
 
 export const CheckButton = () => {
@@ -53,14 +46,14 @@ export const CheckButton = () => {
 
   const arrOrderIdOutput = [
     order.idOrder,
-    order.orderStatusId.name === "Подтвержденные",
+    order.orderStatusId?.name === "Подтвержденные",
   ];
 
   const orderIdOutput = arrOrderIdOutput.every((check) => check);
 
   useEffect(() => {
     if (orderIdOutput) {
-      navigate(`/order/total/id${orderIdOutput && order.idOrder}`);
+      navigate(`/order/total/?id=${orderIdOutput && order.idOrder}`);
     }
   }, [order.idOrder]);
 

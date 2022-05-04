@@ -9,6 +9,7 @@ import statusId from "./statusId/reducers";
 import placemarks from "./placemarks/reducers";
 import optionalService from "./optionalService/reducers";
 import compiledOrder from "./compiledOrder/reducers";
+import { orderReducer } from "./compiledOrder/reducers";
 
 import modalWindows from "./modalWindows/reducers";
 
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   placemarks,
   optionalService,
   compiledOrder,
+  orderReducer,
 
   modalWindows,
 });
