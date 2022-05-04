@@ -25,15 +25,18 @@ import {
 } from "../../../store/compiledOrder/actions";
 import { getPoint, getPoints } from "../../../store/point/selectors";
 import { getCities, getCity } from "../../../store/city/selectors";
-import { getStatusId } from "../../../store/statusId/selectors";
 import { ChooseModelCar } from "../../../store/models/actions";
 import { SelectedAddressCity } from "../../../store/city/actions";
 import { SelectedAddressPoint } from "../../../store/point/actions";
 import { Loader } from "../../atoms/Loader/Loader";
+import {
+  chooseChildSeatCar,
+  chooseFullTankCar,
+  chooseRightHandDriveCar,
+} from "../../../store/optionalService/actions";
 
 export const TotalOrder = () => {
   const dispatch = useDispatch();
-  const statusId = useSelector(getStatusId);
   const points = useSelector(getPoints);
   const cities = useSelector(getCities);
   const point = useSelector(getPoint);
@@ -87,9 +90,9 @@ export const TotalOrder = () => {
 
       dispatch(chooseColor(order.orderData?.color));
       dispatch(chooseRateId(order.orderData?.rateId));
-      dispatch(chooseFullTank(order.orderData?.isFullTank));
-      dispatch(chooseChildChair(order.orderData?.isNeedChildChair));
-      dispatch(chooseRightWheel(order.orderData?.isRightWheel));
+      dispatch(chooseFullTankCar(order.orderData?.isFullTank, 500));
+      dispatch(chooseChildSeatCar(order.orderData?.isNeedChildChair, 200));
+      dispatch(chooseRightHandDriveCar(order.orderData?.isRightWheel, 1600));
       dispatch(chooseIdOrder(order.orderData?.id));
       dispatch(chooseStatusId(order.orderData?.orderStatusId));
     }
