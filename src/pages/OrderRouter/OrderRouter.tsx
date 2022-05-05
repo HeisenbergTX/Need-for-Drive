@@ -22,6 +22,7 @@ export const OrderRouter = () => {
   const dispatch = useDispatch();
   const point = useSelector(getPoint);
   const idOrder = useSelector(getCompiledOrder);
+  const order = useSelector(getOrder);
 
   useEffect(() => {
     if (
@@ -35,9 +36,11 @@ export const OrderRouter = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  if (searchParams.get("id") !== null) {
-    dispatch(getOrder(searchParams.get("id")));
-  }
+  useEffect(() => {
+    if (searchParams.get("id") && !idOrder.idOrder) {
+      dispatch(getOrder(searchParams.get("id")));
+    }
+  }, [idOrder.idOrder]);
 
   const arrOrderIdOutput = [
     idOrder.idOrder,
