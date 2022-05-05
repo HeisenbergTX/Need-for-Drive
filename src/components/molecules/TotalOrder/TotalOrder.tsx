@@ -25,15 +25,18 @@ import {
 } from "../../../store/compiledOrder/actions";
 import { getPoint, getPoints } from "../../../store/point/selectors";
 import { getCities, getCity } from "../../../store/city/selectors";
-import { getStatusId } from "../../../store/statusId/selectors";
 import { ChooseModelCar } from "../../../store/models/actions";
 import { SelectedAddressCity } from "../../../store/city/actions";
 import { SelectedAddressPoint } from "../../../store/point/actions";
 import { Loader } from "../../atoms/Loader/Loader";
+import {
+  chooseChildSeatCar,
+  chooseFullTankCar,
+  chooseRightHandDriveCar,
+} from "../../../store/optionalService/actions";
 
 export const TotalOrder = () => {
   const dispatch = useDispatch();
-  const statusId = useSelector(getStatusId);
   const points = useSelector(getPoints);
   const cities = useSelector(getCities);
   const point = useSelector(getPoint);
@@ -87,9 +90,9 @@ export const TotalOrder = () => {
 
       dispatch(chooseColor(order.orderData?.color));
       dispatch(chooseRateId(order.orderData?.rateId));
-      dispatch(chooseFullTank(order.orderData?.isFullTank));
-      dispatch(chooseChildChair(order.orderData?.isNeedChildChair));
-      dispatch(chooseRightWheel(order.orderData?.isRightWheel));
+      dispatch(chooseFullTankCar(order.orderData?.isFullTank, 500));
+      dispatch(chooseChildSeatCar(order.orderData?.isNeedChildChair, 200));
+      dispatch(chooseRightHandDriveCar(order.orderData?.isRightWheel, 1600));
       dispatch(chooseIdOrder(order.orderData?.id));
       dispatch(chooseStatusId(order.orderData?.orderStatusId));
     }
@@ -106,11 +109,8 @@ export const TotalOrder = () => {
     color = completeOrder.colorCar;
   }
 
-  const convertDateFrom =
-    new Date(order.orderData?.dateFrom) ||
-    new Date(completeOrder.valueDateFrom);
-  const convertDateTo =
-    new Date(order.orderData?.dateTo) || new Date(completeOrder.valueDateTo);
+  const convertDateFrom = new Date(completeOrder.valueDateFrom);
+  const convertDateTo = new Date(completeOrder.valueDateTo);
 
   const arrOrderIdOutput = [
     idOrder.idOrder,
@@ -156,18 +156,20 @@ export const TotalOrder = () => {
             ? "Правый руль"
             : "Левый руль"}
         </p>
-        {convertDateFrom && (
-          <p className={style.date}>
-            <span className={style.orderItem}>Доступна с</span>
-            {convertDateFrom.toLocaleString()}
-          </p>
-        )}
-        {convertDateTo && (
-          <p className={style.date}>
-            <span className={style.orderItem}>Доступна по</span>
-            {convertDateTo.toLocaleString()}
-          </p>
-        )}
+
+        <p className={style.date}>
+          <span className={style.orderItem}>Доступна с</span>
+          {completeOrder.valueDateFrom
+            ? convertDateFrom.toLocaleString()
+            : new Date(order.orderData?.dateTo).toLocaleString()}
+        </p>
+
+        <p className={style.date}>
+          <span className={style.orderItem}>Доступна по</span>
+          {completeOrder.valueDateTo
+            ? convertDateTo.toLocaleString()
+            : new Date(order.orderData?.dateTo).toLocaleString()}
+        </p>
       </div>
       <img className={style.img} src={selectedCar.image} alt={"imageCar"} />
     </section>
