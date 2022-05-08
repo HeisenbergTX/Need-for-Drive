@@ -1,17 +1,26 @@
-import { ADD_PLACEMARK, ADD_PLACEMARK_CITY } from "./types";
+import {
+  ADD_PLACEMARK,
+  ADD_PLACEMARK_CITY,
+  ADD_PLACEMARK_ACTIVE,
+} from "./types";
 
-export const addPlacemark = (address: string, bounds: any) => ({
+export const addPlacemark = (coordinates: number[]) => ({
   type: ADD_PLACEMARK,
   payload: {
-    address,
-    bounds,
+    coordinates,
   },
 });
 
-export const addPlacemarkCity = (city: string, bounds: any) => ({
+export const addPlacemarkCity = (coordinates: number[]) => ({
   type: ADD_PLACEMARK_CITY,
   payload: {
-    city,
-    bounds,
+    coordinates,
+  },
+});
+
+export const addPlacemarkActive = (coordinates: number[]) => ({
+  type: ADD_PLACEMARK_ACTIVE,
+  payload: {
+    coordinates,
   },
 });
