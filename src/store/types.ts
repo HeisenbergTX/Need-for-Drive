@@ -61,3 +61,7 @@ export interface IRate {
     name: string;
   };
 }
+
+export interface IPlacemark {
+  coordinates: number[];
+}

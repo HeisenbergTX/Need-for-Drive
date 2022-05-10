@@ -19,6 +19,7 @@ import { getPoint } from "../../../store/point/selectors";
 import { getPoints } from "../../../store/point/selectors";
 
 import { RequestStatusId } from "../../../store/statusId/actions";
+import { getStatusId } from "../../../store/statusId/selectors";
 
 export const Form = () => {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export const Form = () => {
   const points = useSelector(getPoints);
   const city = useSelector(getCity);
   const point = useSelector(getPoint);
+  const status = useSelector(getStatusId);
 
   const cityHandler = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch(SelectedAddressCity(e.target.value));
@@ -51,8 +53,10 @@ export const Form = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(RequestStatusId());
-  }, []);
+    if (status.length === 0) {
+      dispatch(RequestStatusId());
+    }
+  }, [status]);
 
   return (
     <section className={style.section}>

@@ -1,11 +1,19 @@
-import { ADD_PLACEMARK, ADD_PLACEMARK_CITY } from "./types";
+import {
+  ADD_PLACEMARK,
+  ADD_PLACEMARK_ACTIVE,
+  ADD_PLACEMARK_CITY,
+} from "./types";
 
 interface IState {
-  placemarks: unknown[];
+  coordinatesCity: number[];
+  coordinatesPoint: number[];
+  coordinateActive: number[];
 }
 
 const initialState: IState = {
-  placemarks: [],
+  coordinatesCity: [],
+  coordinatesPoint: [],
+  coordinateActive: [],
 };
 
 export default (
@@ -16,12 +24,17 @@ export default (
     case ADD_PLACEMARK_CITY:
       return {
         ...state,
-        placemarks: [...state.placemarks, payload],
+        coordinatesCity: [...state.coordinatesCity, payload],
       };
     case ADD_PLACEMARK:
       return {
         ...state,
-        placemarks: [...state.placemarks, payload],
+        coordinatesPoint: [...state.coordinatesPoint, payload],
+      };
+    case ADD_PLACEMARK_ACTIVE:
+      return {
+        ...state,
+        coordinateActive: payload,
       };
     default:
       return state;
