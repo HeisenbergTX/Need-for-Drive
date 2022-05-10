@@ -6,6 +6,7 @@ import models from "./models/sagas";
 import rates from "./rates/sagas";
 import statusId from "./statusId/sagas";
 import postOrder from "./compiledOrder/sagas";
+import { GetOrderSagaWatcher } from "./compiledOrder/sagas";
 
 export function* rootSaga() {
   yield all([
@@ -15,5 +16,6 @@ export function* rootSaga() {
     fork(statusId),
     fork(rates),
     fork(postOrder),
+    fork(GetOrderSagaWatcher),
   ]);
 }

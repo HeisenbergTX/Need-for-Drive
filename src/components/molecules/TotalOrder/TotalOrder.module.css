@@ -4,6 +4,34 @@
   font-size: 14px;
 }
 
+.hide::before {
+  content: "";
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  background: rgba(21, 27, 31, 0.8);
+  z-index: 5;
+}
+
+.loader {
+  top: 50%;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+}
+
+.titleLoading {
+  margin: 0;
+  font-size: 20px;
+  color: var(--main-white);
+}
+
 .title {
   font-weight: 400;
   margin: 0;
@@ -56,6 +84,9 @@
   .section {
     margin-top: 25px;
     margin-bottom: 20px;
+  }
+  .loader {
+    margin-left: -85px;
   }
 }
 

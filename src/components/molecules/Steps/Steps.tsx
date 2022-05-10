@@ -10,7 +10,10 @@ import {
   getRateCar,
   getRentalPeriodCar,
 } from "../../../store/optionalService/selectors";
-import { getCompiledOrder } from "../../../store/compiledOrder/selectors";
+import {
+  getCompiledOrder,
+  getOrder,
+} from "../../../store/compiledOrder/selectors";
 
 export const Steps = () => {
   const points = useSelector(getPoints);
@@ -19,6 +22,7 @@ export const Steps = () => {
   const rateCar = useSelector(getRateCar);
   const rentPeriod = useSelector(getRentalPeriodCar);
   const idOrder = useSelector(getCompiledOrder);
+  const order = useSelector(getOrder);
 
   const fullnessCheck = [colorCar, rateCar, rentPeriod];
   const stepActive = fullnessCheck.every((check) => check);
@@ -29,12 +33,19 @@ export const Steps = () => {
     e.preventDefault();
   };
 
+  const arrOrderIdOutput = [
+    idOrder.orderStatusId?.name === "Подтвержденные",
+    idOrder.idOrder,
+  ];
+
+  const orderIdOutput = arrOrderIdOutput.every((check) => check);
+
   return (
     <section className={style.section}>
-      {idOrder.idOrder && (
+      {orderIdOutput && (
         <p className={style.text}>Заказ номер {idOrder.idOrder}</p>
       )}
-      {idOrder.idOrder === undefined && (
+      {!orderIdOutput && (
         <>
           <NavLink
             className={cn(style.stepItem, { [style.passedPhase]: point })}

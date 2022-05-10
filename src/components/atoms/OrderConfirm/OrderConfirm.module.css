@@ -58,15 +58,21 @@
 }
 
 .confirm {
-  background: var(--main-accent);
+  background: var(--gray-white);
+  cursor: default;
 }
 
-.confirm:hover {
+.confirm:not(:disabled):hover {
   background: var(--main-accent-hover);
 }
 
-.confirm:active {
+.confirm:not(:disabled):active {
   background: var(--main-accent-click);
+}
+
+.confirm:not(:disabled) {
+  background: var(--main-accent);
+  cursor: pointer;
 }
 
 .cancel {
@@ -94,8 +100,5 @@
   }
   .confirm {
     margin-right: 16px;
-  }
-  .loader {
-    margin-left: -85px;
   }
 }

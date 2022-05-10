@@ -12,6 +12,8 @@ import {
   CHOOSE_CHILD_CHAIR,
   CHOOSE_RIGHT_WHEEL,
   CHOOSE_ID_ORDER,
+  GET_ORDER,
+  SUCCESS_ORDER,
 } from "./types";
 
 interface IState {
@@ -115,6 +117,34 @@ export default (
         ...state,
         idOrder: payload,
       };
+    default:
+      return state;
+  }
+};
+
+const orderState = {
+  pending: false,
+  orderData: {},
+};
+
+export const orderReducer = (
+  state = orderState,
+  { type, payload }: { type: string; payload: any }
+) => {
+  switch (type) {
+    case GET_ORDER: {
+      return {
+        ...state,
+        pending: true,
+      };
+    }
+    case SUCCESS_ORDER: {
+      return {
+        ...state,
+        pending: false,
+        orderData: payload,
+      };
+    }
     default:
       return state;
   }
